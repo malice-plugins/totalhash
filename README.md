@@ -29,7 +29,7 @@ This repository contains a **Dockerfile** of **malice/totalhash** for [Docker](h
 ```bash
 Usage: totalhash [OPTIONS] COMMAND [arg...]
 
-Malice #totalhash Plugin
+Malice totalhash Plugin
 
 Version: v0.1.0, BuildTime: 20160219
 
@@ -40,8 +40,8 @@ Options:
   --post, -p	POST results to Malice webhook [$MALICE_ENDPOINT]
   --proxy, -x	proxy settings for Malice webhook endpoint [$MALICE_PROXY]
   --table, -t	output as Markdown table
-  --user 	#totalhash user [$MALICE_TH_USER]
-  --key 	#totalhash key [$MALICE_TH_KEY]
+  --user 	totalhash user [$MALICE_TH_USER]
+  --key 	totalhash key [$MALICE_TH_KEY]
   --help, -h	show help
   --version, -v	print the version
 

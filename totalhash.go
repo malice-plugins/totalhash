@@ -187,7 +187,7 @@ func main() {
 	app.Email = "https://github.com/blacktop"
 	app.Version = Version + ", BuildTime: " + BuildTime
 	app.Compiled, _ = time.Parse("20060102", BuildTime)
-	app.Usage = "Malice #totalhash Plugin"
+	app.Usage = "Malice totalhash Plugin"
 	var thuser string
 	var thkey string
 	app.Flags = []cli.Flag{
@@ -208,14 +208,14 @@ func main() {
 		cli.StringFlag{
 			Name:        "user",
 			Value:       "",
-			Usage:       "#totalhash user",
+			Usage:       "totalhash user",
 			EnvVar:      "MALICE_TH_USER",
 			Destination: &thuser,
 		},
 		cli.StringFlag{
 			Name:        "key",
 			Value:       "",
-			Usage:       "#totalhash key",
+			Usage:       "totalhash key",
 			EnvVar:      "MALICE_TH_KEY",
 			Destination: &thkey,
 		},
