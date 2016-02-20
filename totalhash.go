@@ -234,7 +234,7 @@ func main() {
 				fmt.Println(string(thashJSON))
 			}
 		} else {
-			log.Fatal(fmt.Errorf("Please supply a SHA1 hash to query."))
+			cli.ShowAppHelp(c)
 		}
 	}
 
