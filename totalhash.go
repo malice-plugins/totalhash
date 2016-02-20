@@ -1,16 +1,17 @@
 package main
 
 import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"log"
 	"os"
-	"regexp"
-	"strings"
 	"time"
 
 	"github.com/codegangsta/cli"
-	"github.com/crackcomm/go-clitable"
 	"github.com/levigross/grequests"
 	"github.com/parnurzeal/gorequest"
 )
@@ -21,31 +22,20 @@ var Version string
 // BuildTime stores the plugin's build time
 var BuildTime string
 
-// ShadowServer json object
-type ShadowServer struct {
-	Results ResultsData `json:"shadow-server"`
+type TotalHashAnalysis struct {
+	Where string `xml:"where,attr"`
+	Addr  string
 }
-
-// ResultsData json object
-type ResultsData struct {
-	Found     bool             `json:"found"`
-	SandBox   SandBoxResults   `json:"sandbox"`
-	WhiteList WhiteListResults `json:"whitelist"`
+type Address struct {
+	City, State string
 }
-
-// SandBoxResults is a shadow-server SandboxApi results JSON object
-type SandBoxResults struct {
-	MD5       string            `json:"md5"`
-	SHA1      string            `json:"sha1"`
-	FirstSeen time.Time         `json:"first_seen"`
-	LastSeen  time.Time         `json:"last_seen"`
-	FileType  string            `json:"type"`
-	SSDeep    string            `json:"ssdeep"`
-	Antivirus map[string]string `json:"antivirus"`
+type Result struct {
+	XMLName xml.Name `xml:"Person"`
+	Name    string   `xml:"FullName"`
+	Phone   string
+	Groups  []string `xml:"Group>Value"`
+	Address
 }
-
-// WhiteListResults is a shadow-server bin-test results JSON object
-type WhiteListResults map[string]string
 
 func getopt(name, dfault string) string {
 	value := os.Getenv(name)
@@ -61,126 +51,15 @@ func assert(err error) {
 	}
 }
 
-func hashType(hash string) *grequests.RequestOptions {
-	if match, _ := regexp.MatchString("([a-fA-F0-9]{32})", hash); match {
-		return &grequests.RequestOptions{
-			Params: map[string]string{
-				"md5": hash,
-			},
-		}
-	} else if match, _ := regexp.MatchString("([a-fA-F0-9]{40})", hash); match {
-		return &grequests.RequestOptions{
-			Params: map[string]string{
-				"sha1": hash,
-			},
-		}
-	} else if match, _ := regexp.MatchString("([a-fA-F0-9]{64})", hash); match {
-		return &grequests.RequestOptions{
-			Params: map[string]string{
-				"sha256": hash,
-			},
-		}
-	} else if match, _ := regexp.MatchString("([a-fA-F0-9]{128})", hash); match {
-		return &grequests.RequestOptions{
-			Params: map[string]string{
-				"sha512": hash,
-			},
-		}
-	} else {
-		return &grequests.RequestOptions{ //, fmt.Errorf("%s is not a valid hash", hash)
-		}
-	}
-}
-
-func parseLookupHashOutput(lookupout string, hash string) ResultsData {
-	lookup := ResultsData{}
-
-	lines := strings.Split(lookupout, "\n")
-
-	if len(lines) == 2 {
-		if strings.Contains(lines[0], "! No match found") {
-			lookup.Found = false
-			return lookup
-		}
-		if strings.Contains(lines[0], "! Whitelisted:") {
-			lookup.Found = true
-			lookup.WhiteList = WhiteListHash(hash)
-			return lookup
-		}
-	} else if len(lines) == 3 {
-		values := strings.Split(lines[0], ",")
-		lookup.Found = true
-		lookup.WhiteList = WhiteListHash(hash)
-		if len(values) == 6 {
-			lookup.SandBox.MD5 = strings.Trim(values[0], "\"")
-			lookup.SandBox.SHA1 = strings.Trim(values[1], "\"")
-			// "2009-07-24 02:09:53"
-			const longForm = "2006-01-02 15:04:05"
-			timeFirstSeen, _ := time.Parse(longForm, strings.Trim(values[2], "\""))
-			lookup.SandBox.FirstSeen = timeFirstSeen
-			timeLastSeen, _ := time.Parse(longForm, strings.Trim(values[3], "\""))
-			lookup.SandBox.LastSeen = timeLastSeen
-			lookup.SandBox.FileType = strings.Trim(values[4], "\"")
-			lookup.SandBox.SSDeep = strings.Trim(values[5], "\"")
-		}
-		if len(lines[1]) == 2 {
-			lookup.SandBox.Antivirus = nil
-		} else {
-			assert(json.Unmarshal([]byte(lines[1]), &lookup.SandBox.Antivirus))
-		}
-	} else {
-		log.Fatal(fmt.Errorf("Unable to parse LookupHashOutput: %#v\n", lookupout))
-	}
-
-	return lookup
-}
-
-func parseWhiteListOutput(whitelistout string) WhiteListResults {
-	whitelist := WhiteListResults{}
-
-	lines := strings.Split(whitelistout, "\n")
-
-	if len(lines) > 1 {
-
-		fields := strings.SplitN(lines[0], " ", 2)
-
-		if len(fields) == 2 {
-			if fields[1] == "" {
-				return nil
-			}
-			assert(json.Unmarshal([]byte(fields[1]), &whitelist))
-		}
-	}
-	// fmt.Println("whitelist")
-	// fmt.Printf("%#v\n", whitelist)
-	return whitelist
-}
-
-// WhiteListHash test hash against a list of known software applications
-func WhiteListHash(hash string) WhiteListResults {
-
-	resp, err := grequests.Get("http://bin-test.shadowserver.org/api", hashType(hash))
-
-	if err != nil {
-		log.Fatalln("Unable to make request: ", err)
-	}
-
-	if resp.Ok != true {
-		log.Println("Request did not return OK")
-	}
-
-	return parseWhiteListOutput(resp.String())
-}
-
-// LookupHash retreieves the shadow-server file report for the given hash
-func LookupHash(hash string) ResultsData {
-	// NOTE: https://godoc.org/github.com/levigross/grequests
+func doSearch(query string, userid string, sign string) {
 	ro := &grequests.RequestOptions{
+		InsecureSkipVerify: true,
 		Params: map[string]string{
-			"query": hash,
+			"id":   userid,
+			"sign": sign,
 		},
 	}
-	resp, err := grequests.Get("http://innocuous.shadowserver.org/api/", ro)
+	resp, err := grequests.Get("https://api.totalhash.com/usage/", ro)
 
 	if err != nil {
 		log.Fatalln("Unable to make request: ", err)
@@ -189,42 +68,96 @@ func LookupHash(hash string) ResultsData {
 	if resp.Ok != true {
 		log.Println("Request did not return OK")
 	}
-	ssResult := parseLookupHashOutput(resp.String(), hash)
-	// fmt.Println(resp.String())
-	// fmt.Printf("%#v", ssResult)
-	return ssResult
+
+	fmt.Println(resp.String())
+}
+
+func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
+	ro := &grequests.RequestOptions{
+		InsecureSkipVerify: true,
+		Params: map[string]string{
+			"id":   userid,
+			"sign": sign,
+		},
+	}
+	resp, err := grequests.Get("http://api.totalhash.com/analysis/"+sha1, ro)
+
+	if err != nil {
+		log.Fatalln("Unable to make request: ", err)
+	}
+
+	if resp.Ok != true {
+		log.Println("Request did not return OK")
+	}
+
+	fmt.Println(resp.String())
+	tha := TotalHashAnalysis{}
+	return tha
+}
+
+func getUsage(userid string, sign string) {
+	ro := &grequests.RequestOptions{
+		InsecureSkipVerify: true,
+		Params: map[string]string{
+			"id":  userid,
+			"sig": sign,
+		},
+	}
+	resp, err := grequests.Get("https://api.totalhash.com/usage/", ro)
+
+	if err != nil {
+		log.Fatalln("Unable to make request: ", err)
+	}
+
+	if resp.Ok != true {
+		log.Println("Request did not return OK")
+	}
+
+	fmt.Println(resp.String())
+}
+
+func uploadSample(path string, userid string, sign string) {
+	fd, err := grequests.FileUploadFromDisk(path)
+
+	if err != nil {
+		log.Println("Unable to open file: ", err)
+	}
+
+	// This will upload the file as a multipart mime request
+	resp, err := grequests.Post("https://api.totalhash.com/upload/",
+		&grequests.RequestOptions{
+			InsecureSkipVerify: true,
+			Files:              fd,
+			Params: map[string]string{
+				"id":  userid,
+				"sig": sign,
+			},
+		})
+
+	if err != nil {
+		log.Println("Unable to make request", resp.Error)
+	}
+
+	if resp.Ok != true {
+		log.Println("Request did not return OK")
+	}
+
+	fmt.Println(resp.String())
+}
+
+func getHmac256Signature(message string, secret string) string {
+	key := []byte(secret)
+	sig := hmac.New(sha256.New, key)
+	sig.Write([]byte(message))
+	return hex.EncodeToString(sig.Sum(nil))
 }
 
 func printStatus(resp gorequest.Response, body string, errs []error) {
 	fmt.Println(resp.Status)
 }
 
-func printMarkDownTable(ss ShadowServer) {
-	fmt.Println("#### shadow-server")
-	if ss.Results.WhiteList != nil {
-		fmt.Println("##### WhiteList")
-		table := clitable.New([]string{"Found", "Filename", "Description", "ProductName"})
-		table.AddRow(map[string]interface{}{
-			"Found":       ss.Results.Found,
-			"Filename":    ss.Results.WhiteList["filename"],
-			"Description": ss.Results.WhiteList["description"],
-			"ProductName": ss.Results.WhiteList["product_name"],
-		})
-		table.Markdown = true
-		table.Print()
-	}
-	if ss.Results.SandBox.Antivirus != nil {
-		fmt.Println("##### AntiVirus")
-		fmt.Printf(" - FirstSeen: %s\n", ss.Results.SandBox.FirstSeen.Format("1/02/2006 3:04PM"))
-		fmt.Printf(" - LastSeen: %s\n", ss.Results.SandBox.LastSeen.Format("1/02/2006 3:04PM"))
-		fmt.Println()
-		table := clitable.New([]string{"Vendor", "Signature"})
-		for key, value := range ss.Results.SandBox.Antivirus {
-			table.AddRow(map[string]interface{}{"Vendor": key, "Signature": value})
-		}
-		table.Markdown = true
-		table.Print()
-	}
+func printMarkDownTable(tha TotalHashAnalysis) {
+	fmt.Println("#### totalhash")
 }
 
 var appHelpTemplate = `Usage: {{.Name}} {{if .Flags}}[OPTIONS] {{end}}COMMAND [arg...]
@@ -249,12 +182,14 @@ Run '{{.Name}} COMMAND --help' for more information on a command.
 func main() {
 	cli.AppHelpTemplate = appHelpTemplate
 	app := cli.NewApp()
-	app.Name = "shadow-server"
+	app.Name = "totalhash"
 	app.Author = "blacktop"
 	app.Email = "https://github.com/blacktop"
 	app.Version = Version + ", BuildTime: " + BuildTime
 	app.Compiled, _ = time.Parse("20060102", BuildTime)
-	app.Usage = "Malice ShadowServer Hash Lookup Plugin"
+	app.Usage = "Malice #totalhash Plugin"
+	var thuser string
+	var thkey string
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
 			Name:   "post, p",
@@ -270,21 +205,36 @@ func main() {
 			Name:  "table, t",
 			Usage: "output as Markdown table",
 		},
+		cli.StringFlag{
+			Name:        "user",
+			Value:       "",
+			Usage:       "#totalhash user",
+			EnvVar:      "MALICE_TH_USER",
+			Destination: &thuser,
+		},
+		cli.StringFlag{
+			Name:        "key",
+			Value:       "",
+			Usage:       "#totalhash key",
+			EnvVar:      "MALICE_TH_KEY",
+			Destination: &thkey,
+		},
 	}
-	app.ArgsUsage = "MD5/SHA1 hash of file"
+	app.ArgsUsage = "SHA1 hash of file"
 	app.Action = func(c *cli.Context) {
 		if c.Args().Present() {
-			ssReport := LookupHash(c.Args().First())
-			ss := ShadowServer{Results: ssReport}
+			sign := getHmac256Signature(c.Args().First(), thkey)
+			thashReport := getAnalysis(c.Args().First(), thuser, sign)
+
 			if c.Bool("table") {
-				printMarkDownTable(ss)
+				printMarkDownTable(thashReport)
 			} else {
-				ssJSON, err := json.Marshal(ss)
+				thashJSON, err := json.Marshal(thashReport)
 				assert(err)
-				fmt.Println(string(ssJSON))
+				fmt.Println(string(thashJSON))
 			}
 		} else {
-			log.Fatal(fmt.Errorf("Please supply a MD5/SHA1 hash to query."))
+			log.Fatal(fmt.Errorf("Please supply a SHA1 hash to query."))
 		}
 	}
 

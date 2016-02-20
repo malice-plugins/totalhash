@@ -1,4 +1,4 @@
-# #totalhash
+## #totalhash
 
 # malice-totalhash
 
