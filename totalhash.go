@@ -4,7 +4,6 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"log"
@@ -135,15 +134,11 @@ func assert(err error) {
 	}
 }
 
+// http://api.totalhash.com/search/$query&id=$userid&sign=$sign
 func doSearch(query string, userid string, sign string) {
-	ro := &grequests.RequestOptions{
-		InsecureSkipVerify: true,
-		Params: map[string]string{
-			"id":   userid,
-			"sign": sign,
-		},
-	}
-	resp, err := grequests.Get("https://api.totalhash.com/usage/", ro)
+	fmt.Println("http://api.totalhash.com/search/" + query + "&id=" + userid + "&sign=" + sign)
+	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
+	resp, err := grequests.Get("http://api.totalhash.com/search/"+query+"&id="+userid+"&sign="+sign, ro)
 
 	if err != nil {
 		log.Fatalln("Unable to make request: ", err)
@@ -161,9 +156,7 @@ func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
 	fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
 	tha := TotalHashAnalysis{}
 
-	ro := &grequests.RequestOptions{
-		InsecureSkipVerify: true,
-	}
+	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
 	resp, err := grequests.Get("http://api.totalhash.com/analysis/"+sha1+"&id="+userid+"&sign="+sign, ro)
 
 	if err != nil {
@@ -189,6 +182,7 @@ func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
 	return tha
 }
 
+// http://api.totalhash.com/usage/id=<userid>&signsig=<sign>
 func getUsage(userid string, key string) {
 	sign := getHmac256Signature("usage", key)
 
@@ -206,6 +200,7 @@ func getUsage(userid string, key string) {
 	fmt.Println(resp.String())
 }
 
+// http://api.totalhash.com/upload/id=<user>&sign=<digest>
 func uploadSample(path string, userid string, sign string) {
 	fd, err := grequests.FileUploadFromDisk(path)
 
@@ -214,14 +209,10 @@ func uploadSample(path string, userid string, sign string) {
 	}
 
 	// This will upload the file as a multipart mime request
-	resp, err := grequests.Post("https://api.totalhash.com/upload/",
+	resp, err := grequests.Post("https://api.totalhash.com/upload/id="+userid+"&sign="+sign,
 		&grequests.RequestOptions{
 			InsecureSkipVerify: true,
 			Files:              fd,
-			Params: map[string]string{
-				"id":  userid,
-				"sig": sign,
-			},
 		})
 
 	if err != nil {
@@ -313,16 +304,21 @@ func main() {
 	app.ArgsUsage = "SHA1 hash of file"
 	app.Action = func(c *cli.Context) {
 		if c.Args().Present() {
+			fmt.Println(thuser)
+			fmt.Println(thkey)
+			fmt.Println(c.Args().First())
 			sign := getHmac256Signature(c.Args().First(), thkey)
-			thashReport := getAnalysis(c.Args().First(), thuser, sign)
-
-			if c.Bool("table") {
-				printMarkDownTable(thashReport)
-			} else {
-				thashJSON, err := json.Marshal(thashReport)
-				assert(err)
-				fmt.Println(string(thashJSON))
-			}
+			fmt.Println(sign)
+			doSearch(c.Args().First(), thuser, sign)
+			// thashReport := getAnalysis(c.Args().First(), thuser, sign)
+			//
+			// if c.Bool("table") {
+			// 	printMarkDownTable(thashReport)
+			// } else {
+			// 	thashJSON, err := json.Marshal(thashReport)
+			// 	assert(err)
+			// 	fmt.Println(string(thashJSON))
+			// }
 		} else {
 			cli.ShowAppHelp(c)
 		}
