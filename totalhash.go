@@ -22,19 +22,103 @@ var Version string
 // BuildTime stores the plugin's build time
 var BuildTime string
 
+// TotalHashAnalysis object
 type TotalHashAnalysis struct {
-	Where string `xml:"where,attr"`
-	Addr  string
+	Found            bool
+	XMLName          xml.Name         `xml:"analysis"`
+	Version          string           `xml:"version,attr"`
+	SHA1             string           `xml:"sha1,attr"`
+	MD5              string           `xml:"md5,attr"`
+	Time             string           `xml:"time,attr"`
+	Static           static           `xml:"static"`
+	Calltree         calltree         `xml:"calltree"`
+	Processes        processes        `xml:"processes"`
+	RunningProcesses runningProcesses `xml:"running_processes"`
+	NetworkPcap      networkPcap      `xml:"network_pcap"`
 }
-type Address struct {
-	City, State string
+type static struct {
+	StringsSHA1 string    `xml:"strings_sha1,attr"`
+	StringsMD5  string    `xml:"strings_md5,attr"`
+	Magic       magic     `xml:"magic"`
+	Sections    []section `xml:"section"`
+	Imports     imports   `xml:"imports"`
+	PEHash      pehash    `xml:"pehash"`
+	Imphash     imphash   `xml:"imphash"`
+	Timestamp   timestamp `xml:"timestamp"`
+	Packer      packer    `xml:"packer"`
+	AVs         []av      `xml:"av"`
 }
-type Result struct {
-	XMLName xml.Name `xml:"Person"`
-	Name    string   `xml:"FullName"`
-	Phone   string
-	Groups  []string `xml:"Group>Value"`
-	Address
+type imports struct {
+	Dll string `xml:"dll,attr"`
+}
+type pehash struct {
+	Value string `xml:"value,attr"`
+}
+type imphash struct {
+	Value string `xml:"value,attr"`
+}
+type timestamp struct {
+	Value string `xml:"value,attr"`
+}
+type packer struct {
+	Value string `xml:"value,attr"`
+}
+type magic struct {
+	Value string `xml:"value,attr"`
+}
+type section struct {
+	Name string `xml:"name,attr"`
+	MD5  string `xml:"md5,attr"`
+	SHA1 string `xml:"sha1,attr"`
+	Size string `xml:"size,attr"`
+}
+type av struct {
+	Scanner   string `xml:"scanner,attr"`
+	Timestamp string `xml:"timestamp,attr"`
+	AVProduct string `xml:"av_product,attr"`
+	Version   string `xml:"version,attr"`
+	Update    string `xml:"update,attr"`
+	Info      string `xml:"info,attr"`
+	Signature string `xml:"signature,attr"`
+}
+type calltree struct {
+	ProcessCall processCall `xml:"process_call"`
+}
+type processCall struct {
+	Index       string `xml:"index,attr"`
+	Filename    string `xml:"filename,attr"`
+	Pid         string `xml:"pid,attr"`
+	StartReason string `xml:"startreason,attr"`
+}
+type processes struct {
+	ScrShotSHA1 string  `xml:"scr_shot_sha1,attr"`
+	ScrShotMD5  string  `xml:"scr_shot_md5,attr"`
+	Process     process `xml:"process"`
+}
+type process struct {
+	Index              string             `xml:"index,attr"`
+	Pid                string             `xml:"pid,attr"`
+	Filename           string             `xml:"filename,attr"`
+	Executionstatus    string             `xml:"executionstatus,attr"`
+	DllHandlingSection dllHandlingSection `xml:"dll_handling_section"`
+}
+type dllHandlingSection struct {
+	LoadDlls []loadDll `xml:"load_dll"`
+}
+type loadDll struct {
+	Filename string `xml:"filename,attr"`
+}
+type runningProcesses struct {
+	RunningProcess []runningProcess `xml:"running_process"`
+}
+type runningProcess struct {
+	Pid      string `xml:"pid,attr"`
+	Filename string `xml:"filename,attr"`
+	PPid     string `xml:"ppid,attr"`
+}
+type networkPcap struct {
+	SHA1 string `xml:"sha1,attr"`
+	MD5  string `xml:"md5,attr"`
 }
 
 func getopt(name, dfault string) string {
@@ -72,38 +156,44 @@ func doSearch(query string, userid string, sign string) {
 	fmt.Println(resp.String())
 }
 
+// http://api.totalhash.com/analysis/<sha1>&id=<userid>&sign=<sign>
 func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
+	fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
+	tha := TotalHashAnalysis{}
+
 	ro := &grequests.RequestOptions{
 		InsecureSkipVerify: true,
-		Params: map[string]string{
-			"id":   userid,
-			"sign": sign,
-		},
 	}
-	resp, err := grequests.Get("http://api.totalhash.com/analysis/"+sha1, ro)
+	resp, err := grequests.Get("http://api.totalhash.com/analysis/"+sha1+"&id="+userid+"&sign="+sign, ro)
 
 	if err != nil {
 		log.Fatalln("Unable to make request: ", err)
+	}
+
+	if resp.StatusCode == 404 {
+		tha.Found = false
+		return tha
 	}
 
 	if resp.Ok != true {
 		log.Println("Request did not return OK")
 	}
 
-	fmt.Println(resp.String())
-	tha := TotalHashAnalysis{}
+	// fmt.Println(resp.String())
+
+	err = xml.Unmarshal(resp.Bytes(), &tha)
+	assert(err)
+
+	tha.Found = true
+
 	return tha
 }
 
-func getUsage(userid string, sign string) {
-	ro := &grequests.RequestOptions{
-		InsecureSkipVerify: true,
-		Params: map[string]string{
-			"id":  userid,
-			"sig": sign,
-		},
-	}
-	resp, err := grequests.Get("https://api.totalhash.com/usage/", ro)
+func getUsage(userid string, key string) {
+	sign := getHmac256Signature("usage", key)
+
+	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
+	resp, err := grequests.Get("https://api.totalhash.com/usage/id="+userid+"&sign="+sign, ro)
 
 	if err != nil {
 		log.Fatalln("Unable to make request: ", err)
