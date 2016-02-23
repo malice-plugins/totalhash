@@ -185,7 +185,7 @@ func doSearch(query string, userid string, sign string) {
 
 // http://api.totalhash.com/analysis/<sha1>&id=<userid>&sign=<sign>
 func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
-	fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
+	// fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
 	tha := TotalHashAnalysis{}
 
 	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
