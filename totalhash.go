@@ -82,7 +82,7 @@ type av struct {
 	Signature string `xml:"signature,attr"`
 }
 type calltree struct {
-	ProcessCall processCall `xml:"process_call"`
+	ProcessCall []processCall `xml:"process_call"`
 }
 type processCall struct {
 	Index       string `xml:"index,attr"`
@@ -104,6 +104,9 @@ type process struct {
 	MutexSection       mutexSection       `xml:"mutex_section"`
 	DllHandlingSection dllHandlingSection `xml:"dll_handling_section"`
 	FilesystemSection  filesystemSection  `xml:"filesystem_section"`
+	// system_info_section  system_info_section  `xml:"system_info_section"`
+	// service_section  service_section  `xml:"service_section"`
+	// windows_hook_section  windows_hook_section  `xml:"windows_hook_section"`
 }
 type registrySection struct {
 	SetValues []setValue `xml:"set_value"`
@@ -125,9 +128,10 @@ type loadDll struct {
 	Filename string `xml:"filename,attr"`
 }
 type filesystemSection struct {
-	CreateFile []createFile `xml:"create_file"`
+	CreateFile []secFile `xml:"create_file"`
+	DeleteFile []secFile `xml:"delete_file"`
 }
-type createFile struct {
+type secFile struct {
 	FileType string `xml:"filetype,attr"`
 	SrcFile  string `xml:"srcfile,attr"`
 }
@@ -181,7 +185,7 @@ func doSearch(query string, userid string, sign string) {
 
 // http://api.totalhash.com/analysis/<sha1>&id=<userid>&sign=<sign>
 func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
-	// fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
+	fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
 	tha := TotalHashAnalysis{}
 
 	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
