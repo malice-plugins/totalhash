@@ -41,9 +41,12 @@ type static struct {
 	StringsMD5  string    `xml:"strings_md5,attr"`
 	Magic       magic     `xml:"magic"`
 	Sections    []section `xml:"section"`
-	Imports     imports   `xml:"imports"`
+	Imports     []imports `xml:"imports"`
 	PEHash      pehash    `xml:"pehash"`
 	Imphash     imphash   `xml:"imphash"`
+	Pdb         pdb       `xml:"pdb"`
+	Version     version   `xml:"version"`
+	Language    language  `xml:"language"`
 	Timestamp   timestamp `xml:"timestamp"`
 	Packer      packer    `xml:"packer"`
 	AVs         []av      `xml:"av"`
@@ -55,6 +58,15 @@ type pehash struct {
 	Value string `xml:"value,attr"`
 }
 type imphash struct {
+	Value string `xml:"value,attr"`
+}
+type pdb struct {
+	Value string `xml:"value,attr"`
+}
+type version struct {
+	Value string `xml:"value,attr"`
+}
+type language struct {
 	Value string `xml:"value,attr"`
 }
 type timestamp struct {
