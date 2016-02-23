@@ -100,13 +100,34 @@ type process struct {
 	Pid                string             `xml:"pid,attr"`
 	Filename           string             `xml:"filename,attr"`
 	Executionstatus    string             `xml:"executionstatus,attr"`
+	MutexSection       mutexSection       `xml:"mutex_section"`
+	RegistrySection    registrySection    `xml:"registry_section"`
 	DllHandlingSection dllHandlingSection `xml:"dll_handling_section"`
+	FilesystemSection  filesystemSection  `xml:"filesystem_section"`
+}
+type mutexSection struct {
+	CreateMutex string `xml:"create_mutex"`
+	Name        string `xml:"name,attr"`
+}
+type registrySection struct {
+	SetValues []setValue `xml:"set_value"`
+}
+type setValue struct {
+	Key   string `xml:"key,attr"`
+	Value string `xml:"value,attr"`
 }
 type dllHandlingSection struct {
 	LoadDlls []loadDll `xml:"load_dll"`
 }
 type loadDll struct {
 	Filename string `xml:"filename,attr"`
+}
+type filesystemSection struct {
+	CreateFile []createFile `xml:"create_file"`
+}
+type createFile struct {
+	FileType string `xml:"filetype,attr"`
+	SrcFile  string `xml:"srcfile,attr"`
 }
 type runningProcesses struct {
 	RunningProcess []runningProcess `xml:"running_process"`
@@ -119,6 +140,10 @@ type runningProcess struct {
 type networkPcap struct {
 	SHA1 string `xml:"sha1,attr"`
 	MD5  string `xml:"md5,attr"`
+}
+type notFound struct {
+	Found bool   `json:"found"`
+	SHA1  string `json:"sha1"`
 }
 
 func getopt(name, dfault string) string {
@@ -316,9 +341,18 @@ func main() {
 			if c.Bool("table") {
 				printMarkDownTable(thashReport)
 			} else {
-				thashJSON, err := json.Marshal(thashReport)
-				assert(err)
-				fmt.Println(string(thashJSON))
+				if thashReport.Found {
+					thashJSON, err := json.Marshal(thashReport)
+					assert(err)
+					fmt.Println(string(thashJSON))
+				} else {
+					notfoundJSON, err := json.Marshal(notFound{
+						Found: false,
+						SHA1:  c.Args().First(),
+					})
+					assert(err)
+					fmt.Println(string(notfoundJSON))
+				}
 			}
 		} else {
 			cli.ShowAppHelp(c)
