@@ -91,23 +91,19 @@ type processCall struct {
 	StartReason string `xml:"startreason,attr"`
 }
 type processes struct {
-	ScrShotSHA1 string  `xml:"scr_shot_sha1,attr"`
-	ScrShotMD5  string  `xml:"scr_shot_md5,attr"`
-	Process     process `xml:"process"`
+	ScrShotSHA1 string    `xml:"scr_shot_sha1,attr"`
+	ScrShotMD5  string    `xml:"scr_shot_md5,attr"`
+	Process     []process `xml:"process"`
 }
 type process struct {
 	Index              string             `xml:"index,attr"`
 	Pid                string             `xml:"pid,attr"`
 	Filename           string             `xml:"filename,attr"`
 	Executionstatus    string             `xml:"executionstatus,attr"`
-	MutexSection       mutexSection       `xml:"mutex_section"`
 	RegistrySection    registrySection    `xml:"registry_section"`
+	MutexSection       mutexSection       `xml:"mutex_section"`
 	DllHandlingSection dllHandlingSection `xml:"dll_handling_section"`
 	FilesystemSection  filesystemSection  `xml:"filesystem_section"`
-}
-type mutexSection struct {
-	CreateMutex string `xml:"create_mutex"`
-	Name        string `xml:"name,attr"`
 }
 type registrySection struct {
 	SetValues []setValue `xml:"set_value"`
@@ -115,6 +111,12 @@ type registrySection struct {
 type setValue struct {
 	Key   string `xml:"key,attr"`
 	Value string `xml:"value,attr"`
+}
+type mutexSection struct {
+	CreateMutex []createMutex `xml:"create_mutex"`
+}
+type createMutex struct {
+	Name string `xml:"name,attr"`
 }
 type dllHandlingSection struct {
 	LoadDlls []loadDll `xml:"load_dll"`
