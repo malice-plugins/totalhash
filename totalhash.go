@@ -4,6 +4,7 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"log"
@@ -153,7 +154,7 @@ func doSearch(query string, userid string, sign string) {
 
 // http://api.totalhash.com/analysis/<sha1>&id=<userid>&sign=<sign>
 func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
-	fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
+	// fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
 	tha := TotalHashAnalysis{}
 
 	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
@@ -304,21 +305,21 @@ func main() {
 	app.ArgsUsage = "SHA1 hash of file"
 	app.Action = func(c *cli.Context) {
 		if c.Args().Present() {
-			fmt.Println(thuser)
-			fmt.Println(thkey)
-			fmt.Println(c.Args().First())
+			// fmt.Println(thuser)
+			// fmt.Println(thkey)
+			// fmt.Println(c.Args().First())
 			sign := getHmac256Signature(c.Args().First(), thkey)
-			fmt.Println(sign)
-			doSearch(c.Args().First(), thuser, sign)
-			// thashReport := getAnalysis(c.Args().First(), thuser, sign)
-			//
-			// if c.Bool("table") {
-			// 	printMarkDownTable(thashReport)
-			// } else {
-			// 	thashJSON, err := json.Marshal(thashReport)
-			// 	assert(err)
-			// 	fmt.Println(string(thashJSON))
-			// }
+			// fmt.Println(sign)
+			// doSearch(c.Args().First(), thuser, sign)
+			thashReport := getAnalysis(c.Args().First(), thuser, sign)
+
+			if c.Bool("table") {
+				printMarkDownTable(thashReport)
+			} else {
+				thashJSON, err := json.Marshal(thashReport)
+				assert(err)
+				fmt.Println(string(thashJSON))
+			}
 		} else {
 			cli.ShowAppHelp(c)
 		}
