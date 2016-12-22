@@ -8,9 +8,11 @@ import (
 	"encoding/xml"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
+	clitable "github.com/crackcomm/go-clitable"
 	"github.com/fatih/structs"
 
 	"github.com/levigross/grequests"
@@ -173,20 +175,6 @@ type notFound struct {
 	SHA1  string `json:"sha1"`
 }
 
-// IsEmpty checks if ResultsData is empty
-// func (r ResultsData) IsEmpty() bool {
-// 	return reflect.DeepEqual(r, ResultsData{})
-// }
-
-func hashType(hash string) *grequests.RequestOptions {
-	hashTyp, err := utils.GetHashType(hash)
-	if err != nil {
-		return &grequests.RequestOptions{}
-	}
-
-	return &grequests.RequestOptions{Params: map[string]string{hashTyp: hash}}
-}
-
 // http://api.totalhash.com/search/$query&id=$userid&sign=$sign
 func doSearch(query string, userid string, sign string) {
 	fmt.Println("http://api.totalhash.com/search/" + query + "&id=" + userid + "&sign=" + sign)
@@ -293,6 +281,17 @@ func printStatus(resp gorequest.Response, body string, errs []error) {
 
 func printMarkDownTable(tha TotalHashAnalysis) {
 	fmt.Println("#### totalhash")
+	if !tha.Found {
+		fmt.Println(" - Not found")
+	} else {
+		table := clitable.New([]string{"Found", "URL", "API", "Scanned"})
+		table.AddRow(map[string]interface{}{
+			"Found": ":white_check_mark:",
+			"URL":   fmt.Sprintf("[link](%s)", "https://totalhash.cymru.com/analysis/?"+tha.SHA1),
+		})
+		table.Markdown = true
+		table.Print()
+	}
 }
 
 func main() {
@@ -368,6 +367,14 @@ func main() {
 			}
 
 			hash := c.Args().First()
+
+			hashTyp, err := utils.GetHashType(hash)
+			utils.Assert(err)
+
+			if !strings.EqualFold(hashTyp, "sha1") {
+				log.Fatal(fmt.Errorf("Please supply a valid 'sha1' hash."))
+			}
+
 			thashReport := getAnalysis(hash, thuser, getHmac256Signature(hash, thkey))
 
 			// upsert into Database
