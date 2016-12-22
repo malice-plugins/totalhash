@@ -51,7 +51,9 @@ Run 'totalhash COMMAND --help' for more information on a command.
 
 This will output to stdout and POST to malice results API webhook endpoint.
 
-### Sample Output **sandbox** JSON:
+## Sample Output
+
+### JSON:
 
 ```json
 {
@@ -163,7 +165,7 @@ This will output to stdout and POST to malice results API webhook endpoint.
 
 ```
 
-### Sample Output **whitelist** (Markdown Table):
+### STDOUT (Markdown Table):
 
 ---
 
@@ -185,7 +187,13 @@ $ docker run -d --name elastic \
                 -p 9200:9200 \
                 -v malice:/usr/share/elasticsearch/data \
                  blacktop/elasticsearch
-$ docker run --rm --link elastic malice/totalhash -t MD5/SHA1
+$ docker run --rm --link elastic malice/totalhash -t SHA1
+```
+
+### POST results to a webhook
+
+```bash
+$ docker run -e MALICE_ENDPOINT="https://malice.io:31337/lookup/hash" malice/totalhash --post SHA1
 ```
 
 ### Issues
