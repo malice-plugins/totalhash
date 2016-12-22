@@ -280,11 +280,11 @@ func printStatus(resp gorequest.Response, body string, errs []error) {
 }
 
 func printMarkDownTable(tha TotalHashAnalysis) {
-	fmt.Println("#### totalhash")
+	fmt.Println("#### #totalhash")
 	if !tha.Found {
 		fmt.Println(" - Not found")
 	} else {
-		table := clitable.New([]string{"Found", "URL", "API", "Scanned"})
+		table := clitable.New([]string{"Found", "URL"})
 		table.AddRow(map[string]interface{}{
 			"Found": ":white_check_mark:",
 			"URL":   fmt.Sprintf("[link](%s)", "https://totalhash.cymru.com/analysis/?"+tha.SHA1),
@@ -377,14 +377,16 @@ func main() {
 
 			thashReport := getAnalysis(hash, thuser, getHmac256Signature(hash, thkey))
 
-			// upsert into Database
-			elasticsearch.InitElasticSearch(elastic)
-			elasticsearch.WritePluginResultsToDatabase(elasticsearch.PluginResults{
-				ID:       utils.Getopt("MALICE_SCANID", hash),
-				Name:     name,
-				Category: category,
-				Data:     structs.Map(thashReport),
-			})
+			if elastic != "" {
+				// upsert into Database
+				elasticsearch.InitElasticSearch(elastic)
+				elasticsearch.WritePluginResultsToDatabase(elasticsearch.PluginResults{
+					ID:       utils.Getopt("MALICE_SCANID", hash),
+					Name:     name,
+					Category: category,
+					Data:     structs.Map(thashReport),
+				})
+			}
 
 			if c.Bool("table") {
 				printMarkDownTable(thashReport)
