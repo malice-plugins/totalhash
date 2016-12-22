@@ -12,3 +12,6 @@ circle.yml
 debug
 docker-entrypoint.sh
 logo.png
+
+xml2go/*
+sample-xml/*
