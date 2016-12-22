@@ -40,7 +40,7 @@ type TotalHash struct {
 
 // ResultsData json object
 type ResultsData struct {
-	Found            bool
+	Found            bool             `json:"found"`
 	XMLName          xml.Name         `xml:"analysis" json:"analysis"`
 	Version          string           `xml:"version,attr" json:"version"`
 	SHA1             string           `xml:"sha1,attr" json:"sha1"`
@@ -53,8 +53,8 @@ type ResultsData struct {
 	NetworkPcap      networkPcap      `xml:"network_pcap" json:"network_pcap"`
 }
 type static struct {
-	StringsSHA1 string    `xml:"strings_sha1,attr"`
-	StringsMD5  string    `xml:"strings_md5,attr"`
+	StringsSHA1 string    `xml:"strings_sha1,attr" json:"strings_sha1"`
+	StringsMD5  string    `xml:"strings_md5,attr" json:"strings_md5"`
 	Magic       magic     `xml:"magic" json:"magic"`
 	Sections    []section `xml:"section" json:"section"`
 	Imports     []imports `xml:"imports" json:"imports"`
@@ -214,8 +214,13 @@ func getAnalysis(sha1 string, userid string, sign string) ResultsData {
 		return tha
 	}
 
+	if resp.StatusCode == 401 || resp.StatusCode == 403 {
+		log.Fatal(fmt.Errorf("BAD user/key - Please supply a valid credentials"))
+	}
+
 	if resp.Ok != true {
 		log.Println("Request did not return OK")
+		log.Println("StatusCode: ", resp.StatusCode)
 	}
 
 	// fmt.Println(resp.String())
@@ -362,7 +367,7 @@ func main() {
 
 		// Check for valid thkey
 		if thkey == "" {
-			log.Fatal(fmt.Errorf("Please supply a valid #totalhash user/key with the flags '--user' and '--key'."))
+			log.Fatal(fmt.Errorf("Please supply a valid #totalhash user/key with the flags '--user' and '--key'"))
 		}
 
 		if c.Args().Present() {
@@ -423,7 +428,7 @@ func main() {
 				}
 			}
 		} else {
-			log.Fatal(fmt.Errorf("Please supply a SHA1 hash to query."))
+			log.Fatal(fmt.Errorf("Please supply a SHA1 hash to query"))
 		}
 		return nil
 	}
