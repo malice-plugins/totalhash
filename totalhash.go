@@ -33,142 +33,147 @@ const (
 	category = "intel"
 )
 
-// TotalHashAnalysis object
-type TotalHashAnalysis struct {
+// TotalHash json object
+type TotalHash struct {
+	Results ResultsData `json:"totalhash"`
+}
+
+// ResultsData json object
+type ResultsData struct {
 	Found            bool
-	XMLName          xml.Name         `xml:"analysis"`
-	Version          string           `xml:"version,attr"`
-	SHA1             string           `xml:"sha1,attr"`
-	MD5              string           `xml:"md5,attr"`
-	Time             string           `xml:"time,attr"`
-	Static           static           `xml:"static"`
-	Calltree         calltree         `xml:"calltree"`
-	Processes        processes        `xml:"processes"`
-	RunningProcesses runningProcesses `xml:"running_processes"`
-	NetworkPcap      networkPcap      `xml:"network_pcap"`
+	XMLName          xml.Name         `xml:"analysis" json:"analysis"`
+	Version          string           `xml:"version,attr" json:"version"`
+	SHA1             string           `xml:"sha1,attr" json:"sha1"`
+	MD5              string           `xml:"md5,attr" json:"md5"`
+	Time             string           `xml:"time,attr" json:"time"`
+	Static           static           `xml:"static" json:"static"`
+	Calltree         calltree         `xml:"calltree" json:"calltree"`
+	Processes        processes        `xml:"processes" json:"processes"`
+	RunningProcesses runningProcesses `xml:"running_processes" json:"running_processes"`
+	NetworkPcap      networkPcap      `xml:"network_pcap" json:"network_pcap"`
 }
 type static struct {
 	StringsSHA1 string    `xml:"strings_sha1,attr"`
 	StringsMD5  string    `xml:"strings_md5,attr"`
-	Magic       magic     `xml:"magic"`
-	Sections    []section `xml:"section"`
-	Imports     []imports `xml:"imports"`
-	PEHash      pehash    `xml:"pehash"`
-	Imphash     imphash   `xml:"imphash"`
-	Pdb         pdb       `xml:"pdb"`
-	Version     version   `xml:"version"`
-	Language    language  `xml:"language"`
-	Timestamp   timestamp `xml:"timestamp"`
-	Packer      packer    `xml:"packer"`
-	AVs         []av      `xml:"av"`
+	Magic       magic     `xml:"magic" json:"magic"`
+	Sections    []section `xml:"section" json:"section"`
+	Imports     []imports `xml:"imports" json:"imports"`
+	PEHash      pehash    `xml:"pehash" json:"pehash"`
+	Imphash     imphash   `xml:"imphash" json:"imphash"`
+	Pdb         pdb       `xml:"pdb" json:"pdb"`
+	Version     version   `xml:"version" json:"version"`
+	Language    language  `xml:"language" json:"language"`
+	Timestamp   timestamp `xml:"timestamp" json:"timestamp"`
+	Packer      packer    `xml:"packer" json:"packer"`
+	AVs         []av      `xml:"av" json:"av"`
 }
 type imports struct {
-	Dll string `xml:"dll,attr"`
+	Dll string `xml:"dll,attr" json:"dll"`
 }
 type pehash struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type imphash struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type pdb struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type version struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type language struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type timestamp struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type packer struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type magic struct {
-	Value string `xml:"value,attr"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type section struct {
-	Name string `xml:"name,attr"`
-	MD5  string `xml:"md5,attr"`
-	SHA1 string `xml:"sha1,attr"`
-	Size string `xml:"size,attr"`
+	Name string `xml:"name,attr" json:"name"`
+	MD5  string `xml:"md5,attr" json:"md5"`
+	SHA1 string `xml:"sha1,attr" json:"sha1"`
+	Size string `xml:"size,attr" json:"size"`
 }
 type av struct {
-	Scanner   string `xml:"scanner,attr"`
-	Timestamp string `xml:"timestamp,attr"`
-	AVProduct string `xml:"av_product,attr"`
-	Version   string `xml:"version,attr"`
-	Update    string `xml:"update,attr"`
-	Info      string `xml:"info,attr"`
-	Signature string `xml:"signature,attr"`
+	Scanner   string `xml:"scanner,attr" json:"scanner"`
+	Timestamp string `xml:"timestamp,attr" json:"timestamp"`
+	AVProduct string `xml:"av_product,attr" json:"av_product"`
+	Version   string `xml:"version,attr" json:"version"`
+	Update    string `xml:"update,attr" json:"update"`
+	Info      string `xml:"info,attr" json:"info"`
+	Signature string `xml:"signature,attr" json:"signature"`
 }
 type calltree struct {
-	ProcessCall []processCall `xml:"process_call"`
+	ProcessCall []processCall `xml:"process_call" json:"process_call"`
 }
 type processCall struct {
-	Index       string `xml:"index,attr"`
-	Filename    string `xml:"filename,attr"`
-	Pid         string `xml:"pid,attr"`
-	StartReason string `xml:"startreason,attr"`
+	Index       string `xml:"index,attr" json:"index"`
+	Filename    string `xml:"filename,attr" json:"filename"`
+	Pid         string `xml:"pid,attr" json:"pid"`
+	StartReason string `xml:"startreason,attr" json:"start_reason"`
 }
 type processes struct {
-	ScrShotSHA1 string    `xml:"scr_shot_sha1,attr"`
-	ScrShotMD5  string    `xml:"scr_shot_md5,attr"`
-	Process     []process `xml:"process"`
+	ScrShotSHA1 string    `xml:"scr_shot_sha1,attr" json:"scr_shot_sha1"`
+	ScrShotMD5  string    `xml:"scr_shot_md5,attr" json:"scr_shot_md5"`
+	Process     []process `xml:"process" json:"process"`
 }
 type process struct {
-	Index              string             `xml:"index,attr"`
-	Pid                string             `xml:"pid,attr"`
-	Filename           string             `xml:"filename,attr"`
-	Executionstatus    string             `xml:"executionstatus,attr"`
-	RegistrySection    registrySection    `xml:"registry_section"`
-	MutexSection       mutexSection       `xml:"mutex_section"`
-	DllHandlingSection dllHandlingSection `xml:"dll_handling_section"`
-	FilesystemSection  filesystemSection  `xml:"filesystem_section"`
-	// system_info_section  system_info_section  `xml:"system_info_section"`
-	// service_section  service_section  `xml:"service_section"`
-	// windows_hook_section  windows_hook_section  `xml:"windows_hook_section"`
+	Index              string             `xml:"index,attr" json:"index"`
+	Pid                string             `xml:"pid,attr" json:"pid"`
+	Filename           string             `xml:"filename,attr" json:"filename"`
+	Executionstatus    string             `xml:"executionstatus,attr" json:"executionstatus"`
+	RegistrySection    registrySection    `xml:"registry_section" json:"registry_section"`
+	MutexSection       mutexSection       `xml:"mutex_section" json:"mutex_section"`
+	DllHandlingSection dllHandlingSection `xml:"dll_handling_section" json:"dll_handling_section"`
+	FilesystemSection  filesystemSection  `xml:"filesystem_section" json:"filesystem_section"`
+	// system_info_section  system_info_section  `xml:"system_info_section" json:"packer"`
+	// service_section  service_section  `xml:"service_section" json:"packer"`
+	// windows_hook_section  windows_hook_section  `xml:"windows_hook_section" json:"packer"`
 }
 type registrySection struct {
-	SetValues []setValue `xml:"set_value"`
+	SetValues []setValue `xml:"set_value" json:"set_value"`
 }
 type setValue struct {
-	Key   string `xml:"key,attr"`
-	Value string `xml:"value,attr"`
+	Key   string `xml:"key,attr" json:"key"`
+	Value string `xml:"value,attr" json:"value"`
 }
 type mutexSection struct {
-	CreateMutex []createMutex `xml:"create_mutex"`
+	CreateMutex []createMutex `xml:"create_mutex" json:"create_mutex"`
 }
 type createMutex struct {
-	Name string `xml:"name,attr"`
+	Name string `xml:"name,attr" json:"name"`
 }
 type dllHandlingSection struct {
-	LoadDlls []loadDll `xml:"load_dll"`
+	LoadDlls []loadDll `xml:"load_dll" json:"load_dll"`
 }
 type loadDll struct {
-	Filename string `xml:"filename,attr"`
+	Filename string `xml:"filename,attr" json:"filename"`
 }
 type filesystemSection struct {
-	CreateFile []secFile `xml:"create_file"`
-	DeleteFile []secFile `xml:"delete_file"`
+	CreateFile []secFile `xml:"create_file" json:"create_file"`
+	DeleteFile []secFile `xml:"delete_file" json:"delete_file"`
 }
 type secFile struct {
-	FileType string `xml:"filetype,attr"`
-	SrcFile  string `xml:"srcfile,attr"`
+	FileType string `xml:"filetype,attr" json:"filetype"`
+	SrcFile  string `xml:"srcfile,attr" json:"srcfile"`
 }
 type runningProcesses struct {
-	RunningProcess []runningProcess `xml:"running_process"`
+	RunningProcess []runningProcess `xml:"running_process" json:"running_process"`
 }
 type runningProcess struct {
-	Pid      string `xml:"pid,attr"`
-	Filename string `xml:"filename,attr"`
-	PPid     string `xml:"ppid,attr"`
+	Pid      string `xml:"pid,attr" json:"pid"`
+	Filename string `xml:"filename,attr" json:"filename"`
+	PPid     string `xml:"ppid,attr" json:"ppid"`
 }
 type networkPcap struct {
-	SHA1 string `xml:"sha1,attr"`
-	MD5  string `xml:"md5,attr"`
+	SHA1 string `xml:"sha1,attr" json:"sha1"`
+	MD5  string `xml:"md5,attr" json:"md5"`
 }
 type notFound struct {
 	Found bool   `json:"found"`
@@ -193,9 +198,9 @@ func doSearch(query string, userid string, sign string) {
 }
 
 // http://api.totalhash.com/analysis/<sha1>&id=<userid>&sign=<sign>
-func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
+func getAnalysis(sha1 string, userid string, sign string) ResultsData {
 	// fmt.Println("http://api.totalhash.com/analysis/" + sha1 + "&id=" + userid + "&sign=" + sign)
-	tha := TotalHashAnalysis{}
+	tha := ResultsData{}
 
 	ro := &grequests.RequestOptions{InsecureSkipVerify: true}
 	resp, err := grequests.Get("http://api.totalhash.com/analysis/"+sha1+"&id="+userid+"&sign="+sign, ro)
@@ -279,15 +284,15 @@ func printStatus(resp gorequest.Response, body string, errs []error) {
 	fmt.Println(body)
 }
 
-func printMarkDownTable(tha TotalHashAnalysis) {
+func printMarkDownTable(th TotalHash) {
 	fmt.Println("#### #totalhash")
-	if !tha.Found {
+	if !th.Results.Found {
 		fmt.Println(" - Not found")
 	} else {
 		table := clitable.New([]string{"Found", "URL"})
 		table.AddRow(map[string]interface{}{
 			"Found": ":white_check_mark:",
-			"URL":   fmt.Sprintf("[link](%s)", "https://totalhash.cymru.com/analysis/?"+tha.SHA1),
+			"URL":   fmt.Sprintf("[link](%s)", "https://totalhash.cymru.com/analysis/?"+th.Results.SHA1),
 		})
 		table.Markdown = true
 		table.Print()
@@ -375,7 +380,7 @@ func main() {
 				log.Fatal(fmt.Errorf("Please supply a valid 'sha1' hash."))
 			}
 
-			thashReport := getAnalysis(hash, thuser, getHmac256Signature(hash, thkey))
+			th := TotalHash{Results: getAnalysis(hash, thuser, getHmac256Signature(hash, thkey))}
 
 			if elastic != "" {
 				// upsert into Database
@@ -384,15 +389,15 @@ func main() {
 					ID:       utils.Getopt("MALICE_SCANID", hash),
 					Name:     name,
 					Category: category,
-					Data:     structs.Map(thashReport),
+					Data:     structs.Map(th.Results),
 				})
 			}
 
 			if c.Bool("table") {
-				printMarkDownTable(thashReport)
+				printMarkDownTable(th)
 			} else {
-				if thashReport.Found {
-					thashJSON, err := json.Marshal(thashReport)
+				if th.Results.Found {
+					thashJSON, err := json.Marshal(th)
 					utils.Assert(err)
 
 					if c.GlobalBool("post") {
@@ -411,7 +416,7 @@ func main() {
 				} else {
 					notfoundJSON, err := json.Marshal(notFound{
 						Found: false,
-						SHA1:  c.Args().First(),
+						SHA1:  hash,
 					})
 					utils.Assert(err)
 					fmt.Println(string(notfoundJSON))

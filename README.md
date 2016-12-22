@@ -63,10 +63,9 @@ This will output to stdout and POST to malice results API webhook endpoint.
 ---
 
 #### #totalhash
-
-| Found | Filename    | Description | ProductName                        |
-|-------|-------------|-------------|------------------------------------|
-| true  | notepad.exe | Notepad     | Microsoft Windows Operating System |
+| Found              | URL                                                                                    |
+| ------------------ | -------------------------------------------------------------------------------------- |
+| :white_check_mark: | [link](https://totalhash.cymru.com/analysis/?dcdca9f1ef23c06cc077bf1179e94fa999827b64) |
 
 ---
 
