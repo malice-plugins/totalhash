@@ -7,13 +7,17 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"log"
 	"os"
 	"time"
 
-	"github.com/codegangsta/cli"
+	log "github.com/Sirupsen/logrus"
+	"github.com/fatih/structs"
+
 	"github.com/levigross/grequests"
+	"github.com/maliceio/go-plugin-utils/utils"
+	"github.com/maliceio/malice/malice/database/elasticsearch"
 	"github.com/parnurzeal/gorequest"
+	"github.com/urfave/cli"
 )
 
 // Version stores the plugin's version
@@ -21,6 +25,11 @@ var Version string
 
 // BuildTime stores the plugin's build time
 var BuildTime string
+
+const (
+	name     = "totalhash"
+	category = "intel"
+)
 
 // TotalHashAnalysis object
 type TotalHashAnalysis struct {
@@ -164,18 +173,18 @@ type notFound struct {
 	SHA1  string `json:"sha1"`
 }
 
-func getopt(name, dfault string) string {
-	value := os.Getenv(name)
-	if value == "" {
-		value = dfault
-	}
-	return value
-}
+// IsEmpty checks if ResultsData is empty
+// func (r ResultsData) IsEmpty() bool {
+// 	return reflect.DeepEqual(r, ResultsData{})
+// }
 
-func assert(err error) {
+func hashType(hash string) *grequests.RequestOptions {
+	hashTyp, err := utils.GetHashType(hash)
 	if err != nil {
-		log.Fatal(err)
+		return &grequests.RequestOptions{}
 	}
+
+	return &grequests.RequestOptions{Params: map[string]string{hashTyp: hash}}
 }
 
 // http://api.totalhash.com/search/$query&id=$userid&sign=$sign
@@ -217,9 +226,10 @@ func getAnalysis(sha1 string, userid string, sign string) TotalHashAnalysis {
 	}
 
 	// fmt.Println(resp.String())
+	// utils.Assert(ioutil.WriteFile(sha1+".xml", resp.Bytes(), 0644))
 
 	err = xml.Unmarshal(resp.Bytes(), &tha)
-	assert(err)
+	utils.Assert(err)
 
 	tha.Found = true
 
@@ -278,44 +288,42 @@ func getHmac256Signature(message string, secret string) string {
 }
 
 func printStatus(resp gorequest.Response, body string, errs []error) {
-	fmt.Println(resp.Status)
+	fmt.Println(body)
 }
 
 func printMarkDownTable(tha TotalHashAnalysis) {
 	fmt.Println("#### totalhash")
 }
 
-var appHelpTemplate = `Usage: {{.Name}} {{if .Flags}}[OPTIONS] {{end}}COMMAND [arg...]
-
-{{.Usage}}
-
-Version: {{.Version}}{{if or .Author .Email}}
-
-Author:{{if .Author}}
-  {{.Author}}{{if .Email}} - <{{.Email}}>{{end}}{{else}}
-  {{.Email}}{{end}}{{end}}
-{{if .Flags}}
-Options:
-  {{range .Flags}}{{.}}
-  {{end}}{{end}}
-Commands:
-  {{range .Commands}}{{.Name}}{{with .ShortName}}, {{.}}{{end}}{{ "\t" }}{{.Usage}}
-  {{end}}
-Run '{{.Name}} COMMAND --help' for more information on a command.
-`
-
 func main() {
-	cli.AppHelpTemplate = appHelpTemplate
+
+	var (
+		thuser  string
+		thkey   string
+		elastic string
+	)
+
+	cli.AppHelpTemplate = utils.AppHelpTemplate
 	app := cli.NewApp()
+
 	app.Name = "totalhash"
 	app.Author = "blacktop"
 	app.Email = "https://github.com/blacktop"
 	app.Version = Version + ", BuildTime: " + BuildTime
 	app.Compiled, _ = time.Parse("20060102", BuildTime)
 	app.Usage = "Malice totalhash Plugin"
-	var thuser string
-	var thkey string
 	app.Flags = []cli.Flag{
+		cli.BoolFlag{
+			Name:  "verbose, V",
+			Usage: "verbose output",
+		},
+		cli.StringFlag{
+			Name:        "elasitcsearch",
+			Value:       "",
+			Usage:       "elasitcsearch address for Malice to store results",
+			EnvVar:      "MALICE_ELASTICSEARCH",
+			Destination: &elastic,
+		},
 		cli.BoolFlag{
 			Name:   "post, p",
 			Usage:  "POST results to Malice webhook",
@@ -346,37 +354,66 @@ func main() {
 		},
 	}
 	app.ArgsUsage = "SHA1 hash of file"
-	app.Action = func(c *cli.Context) {
+	app.Action = func(c *cli.Context) error {
+
+		// Check for valid thkey
+		if thkey == "" {
+			log.Fatal(fmt.Errorf("Please supply a valid #totalhash user/key with the flags '--user' and '--key'."))
+		}
+
 		if c.Args().Present() {
-			// fmt.Println(thuser)
-			// fmt.Println(thkey)
-			// fmt.Println(c.Args().First())
-			sign := getHmac256Signature(c.Args().First(), thkey)
-			// fmt.Println(sign)
-			// doSearch(c.Args().First(), thuser, sign)
-			thashReport := getAnalysis(c.Args().First(), thuser, sign)
+
+			if c.GlobalBool("verbose") {
+				log.SetLevel(log.DebugLevel)
+			}
+
+			hash := c.Args().First()
+			thashReport := getAnalysis(hash, thuser, getHmac256Signature(hash, thkey))
+
+			// upsert into Database
+			elasticsearch.InitElasticSearch(elastic)
+			elasticsearch.WritePluginResultsToDatabase(elasticsearch.PluginResults{
+				ID:       utils.Getopt("MALICE_SCANID", hash),
+				Name:     name,
+				Category: category,
+				Data:     structs.Map(thashReport),
+			})
 
 			if c.Bool("table") {
 				printMarkDownTable(thashReport)
 			} else {
 				if thashReport.Found {
 					thashJSON, err := json.Marshal(thashReport)
-					assert(err)
+					utils.Assert(err)
+
+					if c.GlobalBool("post") {
+						request := gorequest.New()
+						if c.GlobalBool("proxy") {
+							request = gorequest.New().Proxy(os.Getenv("MALICE_PROXY"))
+						}
+						request.Post(os.Getenv("MALICE_ENDPOINT")).
+							Set("X-Malice-ID", utils.Getopt("MALICE_SCANID", hash)).
+							Send(string(thashJSON)).
+							End(printStatus)
+
+						return nil
+					}
 					fmt.Println(string(thashJSON))
 				} else {
 					notfoundJSON, err := json.Marshal(notFound{
 						Found: false,
 						SHA1:  c.Args().First(),
 					})
-					assert(err)
+					utils.Assert(err)
 					fmt.Println(string(notfoundJSON))
 				}
 			}
 		} else {
-			cli.ShowAppHelp(c)
+			log.Fatal(fmt.Errorf("Please supply a SHA1 hash to query."))
 		}
+		return nil
 	}
 
 	err := app.Run(os.Args)
-	assert(err)
+	utils.Assert(err)
 }

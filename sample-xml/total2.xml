@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysis version="0.3" sha1="6b82f126555e7644816df5d4e4614677ee0bda5c" md5="669f87f2ec48dce3a76386eec94d7e3b" time="2016-02-23 03:55:43">
+ <static strings_sha1="51030328d7cb11c4c5cf7c81892fee9e8de7e45f" strings_md5="fe55922ca8ff4434c56e03482bd68dd4">
+  <magic value="PE32 executable for MS Windows (GUI) Intel 80386 32-bit"/>
+  <section name=".text" md5="9062ff3acdff9ac80cd9f97a0df42383" sha1="5d7f432d0d13e62d15d310806237beda45c11bc6" size="20480"/>
+  <section name=".data" md5="28c9e7872eb9d0a20a1d953382722735" sha1="9bbed44bc55f84410cdc793008bcd7d12da630fc" size="4096"/>
+  <section name=".xcpad" md5="" sha1="" size=""/>
+  <section name=".idata" md5="" sha1="" size=""/>
+  <section name=".reloc" md5="" sha1="" size=""/>
+  <section name=".rsrc" md5="0d4522a26417d45c33759d2a6375a55f" sha1="5ef319ca0005144edd42537ff8ae85761d4af1f8" size="8192"/>
+  <pehash value=""/>
+  <imphash value=""/>
+  <timestamp value=""/>
+  <version value="LegalCopyright: &#10;PackagerVersion: &#10;InternalName: &#10;FileVersion: &#10;CompanyName: &#10;Comments: &#10;ProductName: &#10;ProductVersion: &#10;FileDescription: &#10;Packager: &#10;OriginalFilename: "/>
+  <language value=""/>
+  <packer value=""/>
+  <av scanner="Ad-Aware" timestamp="2016-02-23 03:56:27" av_product="awar" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Alwil (avast)" timestamp="2016-02-23 03:56:27" av_product="avst" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Arcabit (arcavir)" timestamp="2016-02-23 03:56:27" av_product="arca" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Authentium" timestamp="2016-02-23 03:56:27" av_product="auth" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Avira (antivir)" timestamp="2016-02-23 03:56:27" av_product="avir" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="BitDefender" timestamp="2016-02-23 03:56:27" av_product="bitd" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="BullGuard" timestamp="2016-02-23 03:56:27" av_product="bull" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="CA (E-Trust Ino)" timestamp="2016-02-23 03:56:27" av_product="etri" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="CAT (quickheal)" timestamp="2016-02-23 03:56:27" av_product="quic" version="16.00" update="2016-02-20 04:48:08" info="" signature="TrojanAPT.LecnaCBack.MUE.Z3"/>
+  <av scanner="ClamAV" timestamp="2016-02-23 03:56:27" av_product="clam" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Dr. Web" timestamp="2016-02-23 03:56:27" av_product="drwb" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Emsisoft" timestamp="2016-02-23 03:56:27" av_product="emsi" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Eset (nod32)" timestamp="2016-02-23 03:56:27" av_product="nd32" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="F-Secure" timestamp="2016-02-23 03:56:27" av_product="fsec" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Fortinet" timestamp="2016-02-23 03:56:27" av_product="fort" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Frisk (f-prot)" timestamp="2016-02-23 03:56:27" av_product="fprt" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Grisoft (avg)" timestamp="2016-02-23 03:56:27" av_product="avg1" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Ikarus" timestamp="2016-02-23 03:56:27" av_product="ikar" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="K7" timestamp="2016-02-23 03:56:27" av_product="k7av" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Kaspersky" timestamp="2016-02-23 03:56:27" av_product="ka15" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="MalwareBytes" timestamp="2016-02-23 03:56:27" av_product="mbts" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Mcafee" timestamp="2016-02-23 03:56:27" av_product="mcfe" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="MicroWorld (escan)" timestamp="2016-02-23 03:56:27" av_product="esca" version="11.0.1400.1632" update="2016-02-20 08:34:46" info="" signature="Backdoor.Lecna.AB"/>
+  <av scanner="Microsoft Security Essentials" timestamp="2016-02-23 03:56:27" av_product="ms32" version="1.1.12400.0" update="2016-02-20 09:43:24" info="Backdoor" signature="Backdoor:Win32/Lecna!dha"/>
+  <av scanner="Rising" timestamp="2016-02-23 03:56:27" av_product="rise" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Sophos" timestamp="2016-02-23 03:56:27" av_product="soph" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Symantec" timestamp="2016-02-23 03:56:27" av_product="symc" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Trend Micro" timestamp="2016-02-23 03:56:27" av_product="trnd" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Twister" timestamp="2016-02-23 03:56:27" av_product="twis" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="VirusBlokAda (vba32)" timestamp="2016-02-23 03:56:27" av_product="vba3" version="" update="" info="__Error__" signature="Error Scanning File"/>
+  <av scanner="Zillya!" timestamp="2016-02-23 03:56:27" av_product="zill" version="" update="" info="__Error__" signature="Error Scanning File"/>
+ </static>
+ <calltree/>
+ <processes scr_shot_sha1="2742443c33de7d5acd8a846558a8d661d7ae1575" scr_shot_md5="7a26f122532fbd97d16a6b625ca35211">
+  <process index="1" pid="1872" filename="C:\6b82f126555e7644816df5d4e4614677ee0bda5c.exe">
+   <registry_section>
+    <set_value key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\CurrentNetInf\pid" value="7c93g237666f8755927eg6e5f5725788ff1ceb6d/fyf\\x00\\xc3\\xbe\\x18\\x00\\xd3\\x86\\xc3\\xa6yw\\x00\\x00\\xe2\\x80\\xa1\\x00\\x00\\x00\\x00\\x00h\\xc3\\xb0\\xd3\\x86\\x00p\\xc3\\xbe\\x18\\x00_\\xc3\\xa6ywh\\xc3\\xb0\\xd3\\x86\\x00\\x00\\x00\\x00\\x00\\xc3\\x80\\x085w\\x00\\x00\\x00\\x00\\xc3\\x80\\x085w\\xc3\\x98p@\\x00\\x00\\x00\\x00\\x00\\xd3\\x9c\\xc3\\xbe\\x18\\x00\\xc3\\xb034w\\xc3\\x80\\x085w\\x195\\xc3\\x9bu\\xc3\\x88\\xe2\\x80\\x9e@\\x00\\xc2\\xb4p@\\x00\\xc3\\xa1&amp;3w"/>
+    <set_value key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\CurrentNetInf\hostid" value="10913"/>
+   </registry_section>
+   <mutex_section>
+    <create_mutex name="MicrosoftZj"/>
+   </mutex_section>
+   <dll_handling_section>
+    <load_dll filename="psapi.dll"/>
+   </dll_handling_section>
+   <filesystem_section>
+    <create_file filetype="file" srcfile="C:\Windows"/>
+    <create_file filetype="file" srcfile="C:\Program Files\Internet Exp1orer\IEXPLORE.EXE"/>
+   </filesystem_section>
+  </process>
+  <process index="2" pid="2228" filename="C:\Program Files\Internet Exp1orer\IEXPLORE.EXE">
+   <mutex_section>
+    <create_mutex name="MicrosoftZj"/>
+   </mutex_section>
+   <registry_section>
+    <set_value key="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run\IEXPLORE.EXE" value="C:\Program Files\Internet Exp1orer\IEXPLORE.EXE\\x00"/>
+    <set_value key="HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\CurrentNetInf\pid" value="JFYQMPSF/FYF\\x00755927eg6e5f5725788ff1ceb6d/fyf\\x00\\xc3\\xbe\\x18\\x00\\xd3\\x86\\xc3\\xa6yw\\x00\\x00\\xe2\\x80\\xa1\\x00\\x00\\x00\\x00\\x00h\\xc3\\xb0\\xd3\\x86\\x00p\\xc3\\xbe\\x18\\x00_\\xc3\\xa6ywh\\xc3\\xb0\\xd3\\x86\\x00\\x00\\x00\\x00\\x00\\xc3\\x80\\x085w\\x00\\x00\\x00\\x00\\xc3\\x80\\x085w\\xc3\\x98p@\\x00\\x00\\x00\\x00\\x00\\xd3\\x9c\\xc3\\xbe\\x18\\x00\\xc3\\xb034w\\xc3\\x80\\x085w\\x195\\xc3\\x9bu\\xc3\\x88\\xe2\\x80\\x9e@\\x00\\xc2\\xb4p@\\x00\\xc3\\xa1&amp;3w"/>
+    <set_value key="HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Lsa\forceguest" value="0"/>
+   </registry_section>
+   <dll_handling_section>
+    <load_dll filename="c:\windows\system32\nlaapi.dll"/>
+    <load_dll filename="c:\windows\system32\napinsp.dll"/>
+    <load_dll filename="c:\windows\system32\pnrpnsp.dll"/>
+    <load_dll filename="c:\windows\system32\fwpuclnt.dll"/>
+    <load_dll filename="rasadhlp.dll"/>
+   </dll_handling_section>
+   <filesystem_section>
+    <create_file filetype="file" srcfile="Nsi"/>
+    <create_file filetype="file" srcfile="C:\Windows\netscv.exe"/>
+    <create_file filetype="file" srcfile="C:\Windows\netsvc.exe"/>
+   </filesystem_section>
+  </process>
+ </processes>
+ <running_processes>
+  <running_process pid="0" filename="[System Process]" ppid="0"/>
+  <running_process pid="4" filename="System" ppid="0"/>
+  <running_process pid="260" filename="smss.exe" ppid="4"/>
+  <running_process pid="340" filename="csrss.exe" ppid="332"/>
+  <running_process pid="368" filename="wininit.exe" ppid="332"/>
+  <running_process pid="388" filename="csrss.exe" ppid="380"/>
+  <running_process pid="420" filename="winlogon.exe" ppid="380"/>
+  <running_process pid="476" filename="services.exe" ppid="368"/>
+  <running_process pid="484" filename="lsass.exe" ppid="368"/>
+  <running_process pid="492" filename="lsm.exe" ppid="368"/>
+  <running_process pid="592" filename="svchost.exe" ppid="476"/>
+  <running_process pid="656" filename="svchost.exe" ppid="476"/>
+  <running_process pid="732" filename="svchost.exe" ppid="476"/>
+  <running_process pid="800" filename="svchost.exe" ppid="476"/>
+  <running_process pid="828" filename="svchost.exe" ppid="476"/>
+  <running_process pid="940" filename="svchost.exe" ppid="476"/>
+  <running_process pid="276" filename="svchost.exe" ppid="476"/>
+  <running_process pid="1008" filename="spoolsv.exe" ppid="476"/>
+  <running_process pid="1036" filename="svchost.exe" ppid="476"/>
+  <running_process pid="1108" filename="armsvc.exe" ppid="476"/>
+  <running_process pid="1168" filename="svchost.exe" ppid="476"/>
+  <running_process pid="1484" filename="svchost.exe" ppid="476"/>
+  <running_process pid="1944" filename="taskhost.exe" ppid="476"/>
+  <running_process pid="1996" filename="userinit.exe" ppid="420"/>
+  <running_process pid="2012" filename="dwm.exe" ppid="800"/>
+  <running_process pid="1148" filename="explorer.exe" ppid="1996"/>
+  <running_process pid="2028" filename="reader_sl.exe" ppid="1864"/>
+  <running_process pid="1916" filename="SearchIndexer.exe" ppid="476"/>
+  <running_process pid="2072" filename="wmpnscfg.exe" ppid="1148"/>
+  <running_process pid="2128" filename="SearchProtocolHost.exe" ppid="1916"/>
+  <running_process pid="2144" filename="wmpnscfg.exe" ppid="1148"/>
+  <running_process pid="2228" filename="IEXPLORE.EXE" ppid="1872"/>
+ </running_processes>
+ <network_pcap sha1="62be8552982bae3a5d8e01bc3fcea09eecca7cc0" md5="1a2863503a73f495c990ab0d61497298"/>
+</analysis>

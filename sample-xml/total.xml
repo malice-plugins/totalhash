@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- Totalhash sandbox copyright (c) 2013 -->
+
+<analysis version="0.3" sha1="08092ce31e90c086a459af0fa63a6fc07ccc14a8" md5="7d6121824914e371ce70df31b3d9450d" time="2014-04-22 00:31:18">
+  <static strings_sha1="a4a8d512373c528f45746092eb079248d2685f5a" strings_md5="211a656c060762ed2ba30d8552a8ff28">
+    <magic value="PE32 executable for MS Windows (GUI) Intel 80386 32-bit"></magic>
+    <section name="UPX0" md5="d41d8cd98f00b204e9800998ecf8427e" sha1="da39a3ee5e6b4b0d3255bfef95601890afd80709" size="0"></section>
+    <section name="UPX1" md5="6e148c1c92a19f4c32d66a9aa7805663" sha1="776506221c22870eb1e44ec554c9f740f5bd6128" size="22016"></section>
+    <section name=".rsrc" md5="c716ef168863551a4145aa92ec5e7ef3" sha1="2d3423e3c3a4d26574d87fa74846b4b068262517" size="6656"></section>
+    <imports dll="kernel32.dll"></imports>
+    <imports dll="user32.dll"></imports>
+    <imports dll="winmm.dll"></imports>
+    <pehash value="fa8bb914338b86713ce5daf1eebdedf8a8ca2100"></pehash>
+    <imphash value="36252b5ef7e273fc61a3c9502dcc01b4"></imphash>
+    <timestamp value="2002-02-11 16:17:34"></timestamp>
+    <packer value="UPX -&gt; www.upx.sourceforge.net"></packer>
+    <av scanner="msse" timestamp="2014-04-22 00:31:18" signature="Spammer:Win32/PetTick"></av>
+    <av scanner="mcafee" timestamp="2014-04-22 00:31:18" signature="Spam-Petik"></av>
+    <av scanner="avira" timestamp="2014-04-22 00:31:18" signature="TR/Spammer.Mail.PetTick"></av>
+    <av scanner="avg" timestamp="2014-04-22 00:31:18" signature="SpamTool.JKF"></av>
+  </static>
+  <calltree>
+    <process_call index="1" filename="C:\malware.exe" pid="1392" startreason="AnalysisTarget"></process_call>
+  </calltree>
+  <processes scr_shot_sha1="b2c6c02bcec05be68cd78009d57fe380421a933b" scr_shot_md5="f10e8a0fd673df042a028bb7ef42b232">
+    <process index="1" pid="1392" filename="C:\malware.exe" executionstatus="OK"></process>
+  </processes>
+  <running_processes>
+    <running_process pid="0" filename="[System Process]" ppid="0"></running_process>
+    <running_process pid="4" filename="System" ppid="0"></running_process>
+    <running_process pid="492" filename="smss.exe" ppid="4"></running_process>
+    <running_process pid="548" filename="csrss.exe" ppid="492"></running_process>
+    <running_process pid="572" filename="winlogon.exe" ppid="492"></running_process>
+    <running_process pid="616" filename="services.exe" ppid="572"></running_process>
+    <running_process pid="628" filename="lsass.exe" ppid="572"></running_process>
+    <running_process pid="784" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="848" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1016" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1092" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1156" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1296" filename="spoolsv.exe" ppid="616"></running_process>
+    <running_process pid="1840" filename="alg.exe" ppid="616"></running_process>
+    <running_process pid="236" filename="userinit.exe" ppid="572"></running_process>
+    <running_process pid="312" filename="explorer.exe" ppid="236"></running_process>
+    <running_process pid="948" filename="reader_sl.exe" ppid="312"></running_process>
+    <running_process pid="1124" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1152" filename="monitor.exe" ppid="1124"></running_process>
+  </running_processes>
+  <network_pcap sha1="7a7f55f230d4a60a125424a0b763d16dee9c5906" md5="301047e07ef633a2aa74c70a23d19d97"></network_pcap>
+</analysis>

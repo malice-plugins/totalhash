@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!-- Totalhash sandbox copyright (c) 2013 -->
+
+<analysis version="0.3" sha1="dcdca9f1ef23c06cc077bf1179e94fa999827b64" md5="6d18242c2526e62e3d7b78d1173c6be6" time="2013-12-04 14:36:45">
+  <static strings_sha1="d9883e198021d070664d6d894179d473cdd64ed2" strings_md5="43a92e2598a3a6f24f3badf16263220e">
+    <magic value="PE32 executable for MS Windows (GUI) Intel 80386 32-bit"></magic>
+    <section name=".text" md5="56b2b7db9b12b2d636a1fa0e81647d21" sha1="81bd3c1ea117e317f4842a38f51539ccc2895984" size="10752"></section>
+    <section name=".rdata" md5="75b538a6e820718bbfb752e55a42f329" sha1="2593778f5afdc42df3b691261d05a8a32fc2a08d" size="1536"></section>
+    <section name=".data" md5="538dcfc6fee31a4ca745683aa3386cdd" sha1="be78c4ea0bc8c30bfd5ac69e4ef56a679cea1b3b" size="512"></section>
+    <section name=".rsrc" md5="6c116f5a7a39994808561663c6d365a8" sha1="37297013e276c8f9d4c15836141ad886d4f7ea23" size="10752"></section>
+    <imports dll="kernel32.dll"></imports>
+    <imports dll="gdi32.dll"></imports>
+    <imports dll="user32.dll"></imports>
+    <pehash value="daee4ff91313857f10f77de3bf396bc2de7d1022"></pehash>
+    <timestamp value="2013-10-15 12:42:59"></timestamp>
+    <packer value="Safeguard 1.03 -&gt; Simonzh"></packer>
+    <av scanner="mcafee" timestamp="2013-12-04 14:36:45" signature="Downloader-FUJ!6D18242C2526"></av>
+    <av scanner="avg" timestamp="2013-12-04 14:36:45" signature="Zbot.CRI"></av>
+  </static>
+  <calltree>
+    <process_call index="1" filename="C:\malware.exe" pid="1464" startreason="AnalysisTarget"></process_call>
+    <process_call index="2" pid="1048" filename="&quot;C:\Documents and Settings\Administrator\Local Settings\Temp\suip.exe&quot; "></process_call>
+  </calltree>
+  <processes scr_shot_sha1="7d86f67e7fc715a9cb2158d21668c7d5d846cb8e" scr_shot_md5="ffabc17d884e8d9906a983139d52a2c5">
+    <process index="1" pid="1464" filename="C:\malware.exe" executionstatus="OK">
+      <dll_handling_section>
+        <load_dll filename="version.dll"></load_dll>
+        <load_dll filename="netapi32"></load_dll>
+        <load_dll filename="ole32.dll"></load_dll>
+        <load_dll filename="shell32.dll"></load_dll>
+        <load_dll filename="c:\windows\system32\msctfime.ime"></load_dll>
+        <load_dll filename="user32.dll"></load_dll>
+        <load_dll filename="kernel32"></load_dll>
+        <load_dll filename="clbcatq.dll"></load_dll>
+        <load_dll filename="c:\windows\system32\ntdll.dll"></load_dll>
+        <load_dll filename="setupapi.dll"></load_dll>
+        <load_dll filename="kernel32.dll"></load_dll>
+        <load_dll filename="c:\windows\system32\urlmon.dll"></load_dll>
+        <load_dll filename="wininet.dll"></load_dll>
+        <load_dll filename="secur32.dll"></load_dll>
+      </dll_handling_section>
+      <registry_section>
+        <set_value key="HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\ProxyBypass" value="1"></set_value>
+      </registry_section>
+      <filesystem_section>
+        <create_file filetype="file" srcfile="PIPE\wkssvc"></create_file>
+        <create_file filetype="file" srcfile="C:\Documents and Settings\Administrator\Local Settings\Temp\suip.exe"></create_file>
+      </filesystem_section>
+      <process_section>
+        <create_process targetpid="1048" cmdline="&quot;C:\Documents and Settings\Administrator\Local Settings\Temp\suip.exe&quot; " apifunction="CreateProcessInternal"></create_process>
+      </process_section>
+    </process>
+    <process index="2" pid="1048" filename="&quot;C:\Documents and Settings\Administrator\Local Settings\Temp\suip.exe&quot; ">
+      <dll_handling_section>
+        <load_dll filename="version.dll"></load_dll>
+        <load_dll filename="kernel32.dll"></load_dll>
+        <load_dll filename="wininet.dll"></load_dll>
+        <load_dll filename="shell32.dll"></load_dll>
+        <load_dll filename="c:\windows\system32\msctfime.ime"></load_dll>
+        <load_dll filename="user32.dll"></load_dll>
+        <load_dll filename="c:\windows\system32\ntdll.dll"></load_dll>
+      </dll_handling_section>
+    </process>
+  </processes>
+  <running_processes>
+    <running_process pid="0" filename="[System Process]" ppid="0"></running_process>
+    <running_process pid="4" filename="System" ppid="0"></running_process>
+    <running_process pid="500" filename="smss.exe" ppid="4"></running_process>
+    <running_process pid="548" filename="csrss.exe" ppid="500"></running_process>
+    <running_process pid="572" filename="winlogon.exe" ppid="500"></running_process>
+    <running_process pid="616" filename="services.exe" ppid="572"></running_process>
+    <running_process pid="628" filename="lsass.exe" ppid="572"></running_process>
+    <running_process pid="808" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="856" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1024" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1116" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1188" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="1312" filename="spoolsv.exe" ppid="616"></running_process>
+    <running_process pid="1916" filename="alg.exe" ppid="616"></running_process>
+    <running_process pid="340" filename="userinit.exe" ppid="572"></running_process>
+    <running_process pid="404" filename="explorer.exe" ppid="340"></running_process>
+    <running_process pid="1088" filename="reader_sl.exe" ppid="404"></running_process>
+    <running_process pid="1380" filename="svchost.exe" ppid="616"></running_process>
+    <running_process pid="472" filename="monitor.exe" ppid="1380"></running_process>
+    <running_process pid="1048" filename="suip.exe" ppid="1464"></running_process>
+  </running_processes>
+  <network_pcap sha1="95910b513ebcaf1c483eb00c82f7c430db94cade" md5="fc9668815ee1a272a049bd85e60e8e1a"></network_pcap>
+</analysis>
