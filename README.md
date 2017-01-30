@@ -1,7 +1,7 @@
 malice-totalhash
 ================
 
-[![Circle CI](https://circleci.com/gh/maliceio/malice-totalhash.png?style=shield)](https://circleci.com/gh/maliceio/malice-totalhash) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Image](https://img.shields.io/badge/docker image-22.21 MB-blue.svg)](https://hub.docker.com/r/malice/totalhash/)
+[![Circle CI](https://circleci.com/gh/maliceio/malice-totalhash.png?style=shield)](https://circleci.com/gh/maliceio/malice-totalhash) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Image](https://img.shields.io/badge/docker image-25.6 MB-blue.svg)](https://hub.docker.com/r/malice/totalhash/)
 
 Malice #totalhash Plugin
 
@@ -202,4 +202,4 @@ Find a bug? Want more features? Find something missing in the documentation? Let
 
 ### License
 
-MIT Copyright (c) 2016 **blacktop**
+MIT Copyright (c) 2016-2017 **blacktop**

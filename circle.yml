@@ -12,6 +12,7 @@ dependencies:
     - mkdir -p ~/docker; docker save malice_totalhash > ~/docker/image.tar
 test:
   override:
+    - docker images malice_totalhash
     - docker run malice_totalhash
 
 deployment:
