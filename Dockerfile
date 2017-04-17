@@ -18,8 +18,8 @@ RUN apk --update add --no-cache -t .build-deps \
   && cd /go/src/github.com/maliceio/malice-totalhash \
   && export GOPATH=/go \
   && go version \
-  && go get \
-  && go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/totalhash \
+  && go get -d \
+  && CGO_ENABLED=0 go build -ldflags "-X main.Version=$(cat VERSION) -X main.BuildTime=$(date -u +%Y%m%d)" -o /bin/totalhash \
   && rm -rf /go /usr/local/go /usr/lib/go /tmp/* \
   && apk del --purge .build-deps
 
