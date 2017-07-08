@@ -2,7 +2,12 @@ FROM malice/alpine
 
 LABEL maintainer "https://github.com/blacktop"
 
-COPY . /go/src/github.com/maliceio/malice-totalhash
+LABEL malice.plugin.repository = "https://github.com/malice-plugins/totalhash.git"
+LABEL malice.plugin.category="intel"
+LABEL malice.plugin.mime="hash"
+LABEL malice.plugin.docker.engine="*"
+
+COPY . /go/src/github.com/malice-plugins/totalhash
 RUN apk --update add --no-cache ca-certificates
 RUN apk --update add --no-cache -t .build-deps \
                                     build-base \
@@ -15,7 +20,7 @@ RUN apk --update add --no-cache -t .build-deps \
                                     gcc \
                                     go \
   && echo "===> Building totalhash Go binary..." \
-  && cd /go/src/github.com/maliceio/malice-totalhash \
+  && cd /go/src/github.com/malice-plugins/totalhash \
   && export GOPATH=/go \
   && go version \
   && go get -v \

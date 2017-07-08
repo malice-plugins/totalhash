@@ -36,9 +36,9 @@ type THcreate_mutex struct {
 }
 
 type THcreate_process struct {
-	Apifunction string `xml:" apifunction,attr"  json:"apifunction,omitempty"`
-	Cmdline     string `xml:" cmdline,attr"  json:"cmdline,omitempty"`
-	Targetpid   string `xml:" targetpid,attr"  json:"targetpid,omitempty"`
+	Apifunction string `json:"apifunction,omitempty" xml:" apifunction,attr"`
+	Cmdline     string `json:"cmdline,omitempty" xml:" cmdline,attr"`
+	Targetpid   string `json:"targetpid,omitempty" xml:" targetpid,attr"`
 }
 
 type THdelete_file struct {

@@ -1,9 +1,9 @@
 malice-totalhash
 ================
 
-[![Circle CI](https://circleci.com/gh/maliceio/malice-totalhash.png?style=shield)](https://circleci.com/gh/maliceio/malice-totalhash) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Image](https://img.shields.io/badge/docker%20image-26.1%20MB-blue.svg)](https://hub.docker.com/r/malice/totalhash/)
+[![Circle CI](https://circleci.com/gh/malice-plugins/totalhash.png?style=shield)](https://circleci.com/gh/malice-plugins/totalhash) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Image](https://img.shields.io/badge/docker%20image-21.8MB-blue.svg)](https://hub.docker.com/r/malice/totalhash/)
 
-Malice #totalhash Plugin
+Malice [#totalhash](https://totalhash.cymru.com) Plugin
 
 This repository contains a **Dockerfile** of **malice/totalhash** for [Docker](https://www.docker.io/)'s [trusted build](https://index.docker.io/u/malice/totalhash/) published to the public [DockerHub](https://index.docker.io/).
 
@@ -51,7 +51,8 @@ Run 'totalhash COMMAND --help' for more information on a command.
 
 This will output to stdout and POST to malice results API webhook endpoint.
 
-## Sample Output
+Sample Output
+-------------
 
 ### JSON:
 
@@ -165,7 +166,7 @@ This will output to stdout and POST to malice results API webhook endpoint.
 
 ```
 
-### STDOUT (Markdown Table):
+### Markdown Table:
 
 ---
 
@@ -198,7 +199,7 @@ $ docker run -e MALICE_ENDPOINT="https://malice.io:31337/lookup/hash" malice/tot
 
 ### Issues
 
-Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/maliceio/malice-totalhash/issues/new) and I'll get right on it.
+Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/malice-plugins/totalhash/issues/new) and I'll get right on it.
 
 ### License
 

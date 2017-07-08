@@ -1,24 +1,25 @@
 package main
 
 import (
+	"bytes"
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"html/template"
 	"os"
 	"reflect"
 	"strings"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
-	clitable "github.com/crackcomm/go-clitable"
 	"github.com/fatih/structs"
 
 	"github.com/levigross/grequests"
-	"github.com/maliceio/go-plugin-utils/utils"
-	"github.com/maliceio/malice/malice/database/elasticsearch"
+	"github.com/malice-plugins/go-plugin-utils/database/elasticsearch"
+	"github.com/malice-plugins/go-plugin-utils/utils"
 	"github.com/parnurzeal/gorequest"
 	"github.com/urfave/cli"
 )
@@ -36,7 +37,8 @@ const (
 
 // TotalHash json object
 type TotalHash struct {
-	Results THanalysis `json:"totalhash"`
+	Results  THanalysis `json:"totalhash" structs:"results,omitempty"`
+	MarkDown string     `json:"markdown,omitempty" structs:"markdown,omitempty"`
 }
 
 // IsEmpty checks if THanalysis is empty
@@ -152,19 +154,17 @@ func printStatus(resp gorequest.Response, body string, errs []error) {
 	fmt.Println(body)
 }
 
-func printMarkDownTable(th TotalHash) {
-	fmt.Println("#### #totalhash")
-	if th.Results.IsEmpty() {
-		fmt.Println(" - Not found")
-	} else {
-		table := clitable.New([]string{"Found", "URL"})
-		table.AddRow(map[string]interface{}{
-			"Found": ":white_check_mark:",
-			"URL":   fmt.Sprintf("[link](%s)", "https://totalhash.cymru.com/analysis/?"+th.Results.Sha1),
-		})
-		table.Markdown = true
-		table.Print()
+func generateMarkDownTable(th TotalHash) string {
+	var tplOut bytes.Buffer
+
+	t := template.Must(template.New("").Parse(tpl))
+
+	err := t.Execute(&tplOut, th)
+	if err != nil {
+		log.Println("executing template:", err)
 	}
+
+	return tplOut.String()
 }
 
 func main() {
@@ -245,24 +245,23 @@ func main() {
 			utils.Assert(err)
 
 			if !strings.EqualFold(hashTyp, "sha1") {
-				log.Fatal(fmt.Errorf("Please supply a valid 'sha1' hash."))
+				log.Fatal(fmt.Errorf("please supply a valid 'sha1' hash"))
 			}
 			analysis := getAnalysis(hash, thuser, getHmac256Signature(hash, thkey))
 			th := TotalHash{Results: analysis}
+			th.MarkDown = generateMarkDownTable(th)
 
-			if elastic != "" {
-				// upsert into Database
-				elasticsearch.InitElasticSearch(elastic)
-				elasticsearch.WritePluginResultsToDatabase(elasticsearch.PluginResults{
-					ID:       utils.Getopt("MALICE_SCANID", hash),
-					Name:     name,
-					Category: category,
-					Data:     structs.Map(th.Results),
-				})
-			}
+			// upsert into Database
+			elasticsearch.InitElasticSearch(elastic)
+			elasticsearch.WritePluginResultsToDatabase(elasticsearch.PluginResults{
+				ID:       utils.Getopt("MALICE_SCANID", hash),
+				Name:     name,
+				Category: category,
+				Data:     structs.Map(th),
+			})
 
 			if c.Bool("table") {
-				printMarkDownTable(th)
+				fmt.Println(th.MarkDown)
 			} else {
 				if th.Results.IsEmpty() {
 					notfoundJSON, err := json.Marshal(map[string]string{
@@ -272,6 +271,7 @@ func main() {
 					utils.Assert(err)
 					fmt.Println(string(notfoundJSON))
 				} else {
+					th.MarkDown = ""
 					thashJSON, err := json.Marshal(th)
 					utils.Assert(err)
 

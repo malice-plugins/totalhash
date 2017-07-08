@@ -1,0 +1,2216 @@
+{
+  "took": 87,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 2,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "malice",
+        "_type": "samples",
+        "_id": "AV0kLeI7TLCXwQnk9qH6",
+        "_score": 1,
+        "_source": {
+          "plugins": {
+            "intel": {
+              "totalhash": {
+                "Results": {
+                  "Md5": "9483ba381cdb7c983e630839a0d2a1c3",
+                  "Sha1": "4af607a4ecf7885018ab5a788e8f0607b4fcb08b",
+                  "THcalltree": {
+                    "THprocess_call": [
+                      {
+                        "Filename": "C:\\malware.exe",
+                        "Index": "1",
+                        "Pid": "1348",
+                        "Startreason": "AnalysisTarget"
+                      },
+                      {
+                        "Filename": "\"C:\\Documents and Settings\\Administrator\\Local Settings\\Temp\\asadfg43rwaef.exe\" ",
+                        "Index": "2",
+                        "Pid": "908",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "\\??\\C:\\WINDOWS\\system32\\winlogon.exe",
+                        "Index": "3",
+                        "Pid": "572",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "4",
+                        "Pid": "804",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\services.exe",
+                        "Index": "6",
+                        "Pid": "616",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\lsass.exe",
+                        "Index": "7",
+                        "Pid": "628",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "8",
+                        "Pid": "848",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\System32\\svchost.exe",
+                        "Index": "9",
+                        "Pid": "1016",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "10",
+                        "Pid": "1108",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "11",
+                        "Pid": "1204",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\spoolsv.exe",
+                        "Index": "12",
+                        "Pid": "1296",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\System32\\alg.exe",
+                        "Index": "13",
+                        "Pid": "1848",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\Explorer.EXE",
+                        "Index": "14",
+                        "Pid": "324",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\Program Files\\Adobe\\Acrobat 7.0\\Reader\\reader_sl.exe",
+                        "Index": "15",
+                        "Pid": "960",
+                        "Startreason": ""
+                      },
+                      {
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "16",
+                        "Pid": "1168",
+                        "Startreason": ""
+                      }
+                    ]
+                  },
+                  "THnetwork_pcap": {
+                    "Md5": "b49c80419485329e668939d748c013a8",
+                    "Sha1": "da92fb26daf5944c72845355e05e573728fd355b",
+                    "THdns": [
+                      {
+                        "IP": "",
+                        "RR": "evgonar.1gb.ru",
+                        "Type": "A"
+                      }
+                    ],
+                    "THflows": []
+                  },
+                  "THprocesses": {
+                    "Scr_shot_md5": "f10e8a0fd673df042a028bb7ef42b232",
+                    "Scr_shot_sha1": "b2c6c02bcec05be68cd78009d57fe380421a933b",
+                    "THprocess": [
+                      {
+                        "Executionstatus": "OK",
+                        "Filename": "C:\\malware.exe",
+                        "Index": "1",
+                        "Pid": "1348",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "version.dll"
+                            },
+                            {
+                              "Filename": "netapi32"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\msctfime.ime"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "oleaut32.dll"
+                            },
+                            {
+                              "Filename": "clbcatq.dll"
+                            },
+                            {
+                              "Filename": "kernel32"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\ntdll.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "setupapi.dll"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\urlmon.dll"
+                            },
+                            {
+                              "Filename": "sxs.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "msvbvm60.dll"
+                            },
+                            {
+                              "Filename": "user32"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "PIPE\\wkssvc"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\Administrator\\Local Settings\\Temp\\asadfg43rwaef.exe"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": null,
+                        "THprocess_section": {
+                          "THcreate_process": {
+                            "Apifunction": "CreateProcessInternal",
+                            "Cmdline": "\"C:\\Documents and Settings\\Administrator\\Local Settings\\Temp\\asadfg43rwaef.exe\" ",
+                            "Targetpid": "908"
+                          },
+                          "THopen_process": []
+                        },
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\ProxyBypass",
+                              "Value": "1"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": {
+                          "THset_windows_hook": {
+                            "Hook_address": "0x73481c8c",
+                            "Hookid": "WH_MSGFILTER",
+                            "Threadid": "1356"
+                          }
+                        },
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "\"C:\\Documents and Settings\\Administrator\\Local Settings\\Temp\\asadfg43rwaef.exe\" ",
+                        "Index": "2",
+                        "Pid": "908",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "PIPE\\lsarpc"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\sdra64.exe"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "_AVIRA_21099"
+                            }
+                          ]
+                        },
+                        "THprocess_section": {
+                          "THcreate_process": null,
+                          "THopen_process": [
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "572"
+                            }
+                          ]
+                        },
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\winlogon\\userinit",
+                              "Value": "C:\\WINDOWS\\system32\\userinit.exe,C:\\WINDOWS\\system32\\sdra64.exe,\\\\x00"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "\\??\\C:\\WINDOWS\\system32\\winlogon.exe",
+                        "Index": "3",
+                        "Pid": "572",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": null,
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "_AVIRA_2109"
+                            }
+                          ]
+                        },
+                        "THprocess_section": {
+                          "THcreate_process": null,
+                          "THopen_process": [
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "804"
+                            }
+                          ]
+                        },
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "4",
+                        "Pid": "804",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "rtutils.dll"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\wshtcpip.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "hnetcfg.dll"
+                            },
+                            {
+                              "Filename": "kernel32"
+                            },
+                            {
+                              "Filename": "clbcatq.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "rasapi32.dll"
+                            },
+                            {
+                              "Filename": "rsaenh.dll"
+                            },
+                            {
+                              "Filename": "ws2_32"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\mswsock.dll"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\hnetcfg.dll"
+                            },
+                            {
+                              "Filename": "sensapi.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            },
+                            {
+                              "Filename": "urlmon.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "pipe\\_AVIRA_2108"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\config\\systemprofile\\Local Settings\\Temporary Internet Files\\Content.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\config\\systemprofile\\Local Settings\\History\\History.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\config\\systemprofile\\Cookies\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "\\Device\\Afd\\Endpoint"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "pipe\\_AVIRA_2109"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "_AVIRA_2101"
+                            },
+                            {
+                              "Name": "_AVIRA_2110"
+                            },
+                            {
+                              "Name": "3FA2402801D0CCEE000004A41"
+                            },
+                            {
+                              "Name": "1C3E583801D0CCEE000005101"
+                            },
+                            {
+                              "Name": "1E487B3601D0CCEE000007381"
+                            },
+                            {
+                              "Name": "1BDA357401D0CCEE000004B41"
+                            },
+                            {
+                              "Name": "1ACCCBBA01D0CCEE000002681"
+                            },
+                            {
+                              "Name": "1BB6722E01D0CCEE000004541"
+                            },
+                            {
+                              "Name": "c:!windows!system32!config!systemprofile!local settings!temporary internet files!content.ie5!"
+                            },
+                            {
+                              "Name": "c:!windows!system32!config!systemprofile!local settings!history!history.ie5!"
+                            },
+                            {
+                              "Name": "1B7612B001D0CCEE000003501"
+                            },
+                            {
+                              "Name": "_AVIRA_2108"
+                            },
+                            {
+                              "Name": "c:!windows!system32!config!systemprofile!cookies!"
+                            },
+                            {
+                              "Name": "3BC26DE801D0CCEE000003C01"
+                            },
+                            {
+                              "Name": "1BA0FD0401D0CCEE000003F81"
+                            },
+                            {
+                              "Name": "0000000000000000000000041"
+                            },
+                            {
+                              "Name": "195B3F3C01D0CCEE000001EC1"
+                            },
+                            {
+                              "Name": "3F9D7B7401D0CCEE000004901"
+                            },
+                            {
+                              "Name": "3A80907201D0CCEE000001441"
+                            },
+                            {
+                              "Name": "1AD3F2C801D0CCEE000002741"
+                            }
+                          ]
+                        },
+                        "THprocess_section": {
+                          "THcreate_process": null,
+                          "THopen_process": [
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1188"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1204"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1848"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "492"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "848"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1296"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "628"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "324"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "4"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1108"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "960"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1016"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "616"
+                            }
+                          ]
+                        },
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\explorer\\{35106240-D2F0-DB35-716E-127EB80A0299}\\{3039636B-5F3D-6C64-6675-696870667265}",
+                              "Value": "NULL"
+                            },
+                            {
+                              "Key": "HKEY_CURRENT_CONFIG\\Software\\Microsoft\\windows\\CurrentVersion\\Internet Settings\\ProxyEnable",
+                              "Value": "NULL"
+                            },
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\network\\UID",
+                              "Value": "COMPUTER-XXXXXX_A29DD7F6\\\\x00"
+                            },
+                            {
+                              "Key": "HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\explorer\\{43BF8CD1-C5D5-2230-7BB2-98F22C2B7DC6}\\{3039636B-5F3D-6C64-6675-696870667265}",
+                              "Value": "NULL"
+                            },
+                            {
+                              "Key": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\ProxyBypass",
+                              "Value": "1"
+                            },
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\StandardProfile\\EnableFirewall",
+                              "Value": "NULL"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": {
+                          "THgetaddrinfo": [
+                            {
+                              "RequestedHost": "evgonar.1gb.ru"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "",
+                        "Index": "5",
+                        "Pid": "4",
+                        "THdll_handling_section": null,
+                        "THfilesystem_section": null,
+                        "THmutex_section": null,
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "",
+                        "Index": "6",
+                        "Pid": "492",
+                        "THdll_handling_section": null,
+                        "THfilesystem_section": null,
+                        "THmutex_section": null,
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\services.exe",
+                        "Index": "7",
+                        "Pid": "616",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": null,
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "rsldps"
+                            },
+                            {
+                              "Name": "1ACCCBBA01D0CCEE000002682"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\lsass.exe",
+                        "Index": "8",
+                        "Pid": "628",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "version.dll"
+                            },
+                            {
+                              "Filename": "rsaenh.dll"
+                            },
+                            {
+                              "Filename": "pstorec.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "dnsapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "netapi32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\lowsec\\user.ds"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\config\\systemprofile\\Local Settings\\History\\History.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\config\\systemprofile\\Cookies\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "pipe\\_AVIRA_2108"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\config\\systemprofile\\Local Settings\\Temporary Internet Files\\Content.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "\\Device\\Afd\\Endpoint"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "pipe\\_AVIRA_2109"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "UNC\\WORKGROUP*\\MAILSLOT\\NET\\NETLOGON"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "1AD3F2C801D0CCEE000002742"
+                            },
+                            {
+                              "Name": "_AVIRA_2110"
+                            },
+                            {
+                              "Name": "rsldps"
+                            }
+                          ]
+                        },
+                        "THprocess_section": {
+                          "THcreate_process": null,
+                          "THopen_process": [
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "324"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1108"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1204"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "960"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1848"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "848"
+                            },
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "1296"
+                            }
+                          ]
+                        },
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": {
+                          "THgetaddrinfo": [
+                            {
+                              "RequestedHost": "192.168.1.1"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "9",
+                        "Pid": "848",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "shell32"
+                            },
+                            {
+                              "Filename": "version.dll"
+                            },
+                            {
+                              "Filename": "rsaenh.dll"
+                            },
+                            {
+                              "Filename": "pstorec.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "netapi32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\3SK3DT9A\\desktop.ini"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\K5MJS1IN\\desktop.ini"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Cookies\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\8RGT61W3\\desktop.ini"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\History\\History.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\9RVIH94W\\desktop.ini"
+                            }
+                          ],
+                          "THdelete_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\D4Z32ED8\\desktop.ini"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\658HSJSD\\desktop.ini"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\IIQ3LGTM\\desktop.ini"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\NetworkService\\Local Settings\\Temporary Internet Files\\Content.IE5\\BSDHA97U\\desktop.ini"
+                            }
+                          ]
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "_AVIRA_2110"
+                            },
+                            {
+                              "Name": "rsldps"
+                            },
+                            {
+                              "Name": "c:!documents and settings!networkservice!local settings!history!history.ie5!"
+                            },
+                            {
+                              "Name": "c:!documents and settings!networkservice!cookies!"
+                            },
+                            {
+                              "Name": "c:!documents and settings!networkservice!local settings!temporary internet files!content.ie5!"
+                            },
+                            {
+                              "Name": "1B7612B001D0CCEE000003502"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\5.0\\Cache\\Signature",
+                              "Value": "Client UrlCache MMF Ver 5.2\\\\x00"
+                            },
+                            {
+                              "Key": "HKEY_CURRENT_USER\\software\\microsoft\\windows nt\\currentversion\\network\\UID",
+                              "Value": "COMPUTER-XXXXXX_000181FC\\\\x00"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\System32\\svchost.exe",
+                        "Index": "10",
+                        "Pid": "1016",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "mprapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "iphlpapi.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "PIPE\\lsarpc"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\WBEM\\Repository\\$WinMgmt.CFG"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "1BA0FD0401D0CCEE000003F82"
+                            },
+                            {
+                              "Name": "rsldps"
+                            }
+                          ]
+                        },
+                        "THprocess_section": {
+                          "THcreate_process": null,
+                          "THopen_process": [
+                            {
+                              "ApiFunction": "NtOpenProcess",
+                              "TargetPid": "804"
+                            }
+                          ]
+                        },
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\WBEM\\CIMOM\\List of event-active namespaces",
+                              "Value": "NULL"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "11",
+                        "Pid": "1108",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": null,
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "1BB6722E01D0CCEE000004542"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "12",
+                        "Pid": "1204",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "version.dll"
+                            },
+                            {
+                              "Filename": "rsaenh.dll"
+                            },
+                            {
+                              "Filename": "pstorec.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "netapi32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "PIPE\\lsarpc"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "_AVIRA_2110"
+                            },
+                            {
+                              "Name": "rsldps"
+                            },
+                            {
+                              "Name": "1BDA357401D0CCEE000004B42"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_CURRENT_USER\\software\\microsoft\\windows nt\\currentversion\\network\\UID",
+                              "Value": "COMPUTER-XXXXXX_13EAC70C\\\\x00"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\spoolsv.exe",
+                        "Index": "13",
+                        "Pid": "1296",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "wintrust.dll"
+                            },
+                            {
+                              "Filename": "pjlmon.dll"
+                            },
+                            {
+                              "Filename": "localspl.dll"
+                            },
+                            {
+                              "Filename": "winspool.drv"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\localspl.dll"
+                            },
+                            {
+                              "Filename": "inetpp.dll"
+                            },
+                            {
+                              "Filename": "win32spl.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\mswsock.dll"
+                            },
+                            {
+                              "Filename": "cnbjmon.dll"
+                            },
+                            {
+                              "Filename": "netapi32.dll"
+                            },
+                            {
+                              "Filename": "usbmon.dll"
+                            },
+                            {
+                              "Filename": "tcpmon.dll"
+                            },
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "clbcatq.dll"
+                            },
+                            {
+                              "Filename": "setupapi.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "dnsapi.dll"
+                            },
+                            {
+                              "Filename": "setupapi"
+                            },
+                            {
+                              "Filename": "ole32"
+                            },
+                            {
+                              "Filename": "c:\\windows\\system32\\winrnr.dll"
+                            },
+                            {
+                              "Filename": "rasadhlp.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": null,
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "1C3E583801D0CCEE000005102"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": {
+                          "THset_value": [
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Print\\BeepEnabled",
+                              "Value": "NULL"
+                            },
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\EventLog\\System\\Print\\TypesSupported",
+                              "Value": "7"
+                            },
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Print\\Printers\\SymbolicLinkValue",
+                              "Value": "NULL"
+                            },
+                            {
+                              "Key": "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Print\\Printers\\DefaultSpoolDirectory",
+                              "Value": "C:\\WINDOWS\\System32\\spool\\PRINTERS\\\\x00"
+                            }
+                          ]
+                        },
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\System32\\alg.exe",
+                        "Index": "14",
+                        "Pid": "1848",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": null,
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "rsldps"
+                            },
+                            {
+                              "Name": "1E487B3601D0CCEE000007382"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\Explorer.EXE",
+                        "Index": "15",
+                        "Pid": "324",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "version.dll"
+                            },
+                            {
+                              "Filename": "rsaenh.dll"
+                            },
+                            {
+                              "Filename": "pstorec.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "netapi32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": {
+                          "THcreate_file": [
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\WINDOWS\\system32\\lowsec\\user.ds"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "pipe\\_AVIRA_2108"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\Administrator\\Local Settings\\History\\History.IE5\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\Administrator\\Cookies\\index.dat"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "pipe\\_AVIRA_2109"
+                            },
+                            {
+                              "Filetype": "file",
+                              "Srcfile": "C:\\Documents and Settings\\Administrator\\Local Settings\\Temporary Internet Files\\Content.IE5\\index.dat"
+                            }
+                          ],
+                          "THdelete_file": []
+                        },
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "c:!documents and settings!administrator!local settings!history!history.ie5!"
+                            },
+                            {
+                              "Name": "_AVIRA_2110"
+                            },
+                            {
+                              "Name": "rsldps"
+                            },
+                            {
+                              "Name": "c:!documents and settings!administrator!cookies!"
+                            },
+                            {
+                              "Name": "c:!documents and settings!administrator!local settings!temporary internet files!content.ie5!"
+                            },
+                            {
+                              "Name": "3A80907201D0CCEE000001442"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\Program Files\\Adobe\\Acrobat 7.0\\Reader\\reader_sl.exe",
+                        "Index": "16",
+                        "Pid": "960",
+                        "THdll_handling_section": {
+                          "THload_dll": [
+                            {
+                              "Filename": "psapi.dll"
+                            },
+                            {
+                              "Filename": "ole32.dll"
+                            },
+                            {
+                              "Filename": "wsock32.dll"
+                            },
+                            {
+                              "Filename": "shell32.dll"
+                            },
+                            {
+                              "Filename": "user32.dll"
+                            },
+                            {
+                              "Filename": "shlwapi.dll"
+                            },
+                            {
+                              "Filename": "kernel32.dll"
+                            },
+                            {
+                              "Filename": "crypt32.dll"
+                            },
+                            {
+                              "Filename": "ntdll.dll"
+                            },
+                            {
+                              "Filename": "wininet.dll"
+                            },
+                            {
+                              "Filename": "ws2_32.dll"
+                            },
+                            {
+                              "Filename": "secur32.dll"
+                            },
+                            {
+                              "Filename": "advapi32.dll"
+                            }
+                          ]
+                        },
+                        "THfilesystem_section": null,
+                        "THmutex_section": {
+                          "THcreate_mutex": [
+                            {
+                              "Name": "3BC26DE801D0CCEE000003C02"
+                            }
+                          ]
+                        },
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "C:\\WINDOWS\\system32\\svchost.exe",
+                        "Index": "17",
+                        "Pid": "1168",
+                        "THdll_handling_section": null,
+                        "THfilesystem_section": null,
+                        "THmutex_section": null,
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      },
+                      {
+                        "Executionstatus": "",
+                        "Filename": "",
+                        "Index": "18",
+                        "Pid": "1188",
+                        "THdll_handling_section": null,
+                        "THfilesystem_section": null,
+                        "THmutex_section": null,
+                        "THprocess_section": null,
+                        "THregistry_section": null,
+                        "THwindows_hook_section": null,
+                        "THwinsock_section": null
+                      }
+                    ]
+                  },
+                  "THrunning_processes": {
+                    "THrunning_process": [
+                      {
+                        "Filename": "[System Process]",
+                        "Pid": "0",
+                        "Ppid": "0"
+                      },
+                      {
+                        "Filename": "System",
+                        "Pid": "4",
+                        "Ppid": "0"
+                      },
+                      {
+                        "Filename": "smss.exe",
+                        "Pid": "492",
+                        "Ppid": "4"
+                      },
+                      {
+                        "Filename": "csrss.exe",
+                        "Pid": "548",
+                        "Ppid": "492"
+                      },
+                      {
+                        "Filename": "winlogon.exe",
+                        "Pid": "572",
+                        "Ppid": "492"
+                      },
+                      {
+                        "Filename": "services.exe",
+                        "Pid": "616",
+                        "Ppid": "572"
+                      },
+                      {
+                        "Filename": "lsass.exe",
+                        "Pid": "628",
+                        "Ppid": "572"
+                      },
+                      {
+                        "Filename": "svchost.exe",
+                        "Pid": "804",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "svchost.exe",
+                        "Pid": "848",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "svchost.exe",
+                        "Pid": "1016",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "svchost.exe",
+                        "Pid": "1108",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "svchost.exe",
+                        "Pid": "1204",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "spoolsv.exe",
+                        "Pid": "1296",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "alg.exe",
+                        "Pid": "1848",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "userinit.exe",
+                        "Pid": "228",
+                        "Ppid": "572"
+                      },
+                      {
+                        "Filename": "explorer.exe",
+                        "Pid": "324",
+                        "Ppid": "228"
+                      },
+                      {
+                        "Filename": "reader_sl.exe",
+                        "Pid": "960",
+                        "Ppid": "324"
+                      },
+                      {
+                        "Filename": "svchost.exe",
+                        "Pid": "1168",
+                        "Ppid": "616"
+                      },
+                      {
+                        "Filename": "monitor.exe",
+                        "Pid": "1188",
+                        "Ppid": "1168"
+                      },
+                      {
+                        "Filename": "asadfg43rwaef.exe",
+                        "Pid": "908",
+                        "Ppid": "1348"
+                      }
+                    ]
+                  },
+                  "THstatic": {
+                    "Strings_md5": "ac33aca979aaeee66a70b6a6ad9538bf",
+                    "Strings_sha1": "b24c81ba5dc75edbbd6de5804e7b4a1db38db591",
+                    "THav": [
+                      {
+                        "Av_product": "bull",
+                        "Info": "",
+                        "Scanner": "BullGuard",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 07:26:09",
+                        "Version": "14.1.0.0"
+                      },
+                      {
+                        "Av_product": "esca",
+                        "Info": "",
+                        "Scanner": "MicroWorld (escan)",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 10:12:34",
+                        "Version": "11.0.1400.1632"
+                      },
+                      {
+                        "Av_product": "vba3",
+                        "Info": "",
+                        "Scanner": "VirusBlokAda (vba32)",
+                        "Signature": "Trojan.VBO.05841",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "3.12.26.0"
+                      },
+                      {
+                        "Av_product": "rise",
+                        "Info": "",
+                        "Scanner": "Rising",
+                        "Signature": "Backdoor.Agent!54CA",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-30 12:00:00",
+                        "Version": "23.0.0.0"
+                      },
+                      {
+                        "Av_product": "ikar",
+                        "Info": "",
+                        "Scanner": "Ikarus",
+                        "Signature": "Trojan-Dropper.Win32.Clons",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 08:04:29",
+                        "Version": "V1.32.31.0 (WIN32)"
+                      },
+                      {
+                        "Av_product": "fprt",
+                        "Info": "trojan",
+                        "Scanner": "Frisk (f-prot)",
+                        "Signature": "W32/Dropper.AUHF",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "4.6.5.141"
+                      },
+                      {
+                        "Av_product": "quic",
+                        "Info": "",
+                        "Scanner": "CAT (quickheal)",
+                        "Signature": "no_virus",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-30 10:36:56",
+                        "Version": "16.00"
+                      },
+                      {
+                        "Av_product": "twis",
+                        "Info": "",
+                        "Scanner": "Twister",
+                        "Signature": "Trojan.3973430509A142D5",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-30 09:17:02",
+                        "Version": "1.1.5.9327"
+                      },
+                      {
+                        "Av_product": "avg1",
+                        "Info": "",
+                        "Scanner": "Grisoft (avg)",
+                        "Signature": "Dropper.Generic.BVTK",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "2014.0.4365"
+                      },
+                      {
+                        "Av_product": "avir",
+                        "Info": "",
+                        "Scanner": "Avira (antivir)",
+                        "Signature": "TR/Crypt.ULPM.Gen",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "1.9.161.2"
+                      },
+                      {
+                        "Av_product": "soph",
+                        "Info": "",
+                        "Scanner": "Sophos",
+                        "Signature": "Mal/EncPk-AAK",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 10:12:26",
+                        "Version": "2.98.000"
+                      },
+                      {
+                        "Av_product": "ms32",
+                        "Info": "Password",
+                        "Scanner": "Microsoft Security Essentials",
+                        "Signature": "PWS:Win32/Zbot",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 11:43:38",
+                        "Version": "1.1.11903.0"
+                      },
+                      {
+                        "Av_product": "auth",
+                        "Info": "dropper for Security risk",
+                        "Scanner": "Authentium",
+                        "Signature": "W32/Risk.ZJYD-0613",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 09:53:00",
+                        "Version": "5.4.2"
+                      },
+                      {
+                        "Av_product": "arca",
+                        "Info": "",
+                        "Scanner": "Arcabit (arcavir)",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 10:47:07",
+                        "Version": "2012.0.0.1"
+                      },
+                      {
+                        "Av_product": "avst",
+                        "Info": "",
+                        "Scanner": "Alwil (avast)",
+                        "Signature": "Malware-gen:Win32:Malware-gen",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "8.0.1497.376"
+                      },
+                      {
+                        "Av_product": "k7av",
+                        "Info": "",
+                        "Scanner": "K7",
+                        "Signature": "Backdoor ( 04c4dffb1 )",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 01:33:25",
+                        "Version": "12.0.2.22"
+                      },
+                      {
+                        "Av_product": "fort",
+                        "Info": "",
+                        "Scanner": "Fortinet",
+                        "Signature": "W32/Refroso.IGN!tr",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "4"
+                      },
+                      {
+                        "Av_product": "awar",
+                        "Info": "",
+                        "Scanner": "Ad-Aware",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 03:47:07",
+                        "Version": "11.7.485.8398"
+                      },
+                      {
+                        "Av_product": "padv",
+                        "Info": "",
+                        "Scanner": "Padvish",
+                        "Signature": "Malware.Trojan.Dropper-22795",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-08-01 08:49:29",
+                        "Version": "1.4.38.1485"
+                      },
+                      {
+                        "Av_product": "nd32",
+                        "Info": "",
+                        "Scanner": "Eset (nod32)",
+                        "Signature": "Win32/Injector.ANB",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "6.0.316.0"
+                      },
+                      {
+                        "Av_product": "fsec",
+                        "Info": "",
+                        "Scanner": "F-Secure",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-29 12:00:00",
+                        "Version": "10.00.19060"
+                      },
+                      {
+                        "Av_product": "emsi",
+                        "Info": "",
+                        "Scanner": "Emsisoft",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 11:53:58",
+                        "Version": "10.0.0.5366"
+                      },
+                      {
+                        "Av_product": "trnd",
+                        "Info": "",
+                        "Scanner": "Trend Micro",
+                        "Signature": "Mal_Repyh",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-30 03:29:04",
+                        "Version": "1.2.2.1001"
+                      },
+                      {
+                        "Av_product": "mbts",
+                        "Info": "",
+                        "Scanner": "MalwareBytes",
+                        "Signature": "no_virus",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 10:06:14",
+                        "Version": "1.75.0.1300"
+                      },
+                      {
+                        "Av_product": "ka15",
+                        "Info": "",
+                        "Scanner": "Kaspersky",
+                        "Signature": "Trojan.Win32.Generic",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-08-01 05:15:29",
+                        "Version": "15.0.2.361"
+                      },
+                      {
+                        "Av_product": "mcfe",
+                        "Info": "",
+                        "Scanner": "Mcafee",
+                        "Signature": "Scar.gen.f",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "5600.1067"
+                      },
+                      {
+                        "Av_product": "bitd",
+                        "Info": "",
+                        "Scanner": "BitDefender",
+                        "Signature": "Gen:Variant.Graftor.18194",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 11:53:58",
+                        "Version": "7.2.70367"
+                      },
+                      {
+                        "Av_product": "zill",
+                        "Info": "",
+                        "Scanner": "Zillya!",
+                        "Signature": "Backdoor.Poison.Win32.71787",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-30 05:33:00",
+                        "Version": "9.20.2012"
+                      },
+                      {
+                        "Av_product": "drwb",
+                        "Info": "",
+                        "Scanner": "Dr. Web",
+                        "Signature": "Trojan.MulDrop.52146",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "9.1.1.07171"
+                      },
+                      {
+                        "Av_product": "etri",
+                        "Info": "",
+                        "Scanner": "CA (E-Trust Ino)",
+                        "Signature": "no_virus",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-08-01 05:11:38",
+                        "Version": "37.0.1.55"
+                      },
+                      {
+                        "Av_product": "symc",
+                        "Info": "",
+                        "Scanner": "Symantec",
+                        "Signature": "Trojan Horse",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "1.0.0.1"
+                      },
+                      {
+                        "Av_product": "clam",
+                        "Info": "",
+                        "Scanner": "ClamAV",
+                        "Signature": "Trojan.Dropper-22795",
+                        "Timestamp": "2015-08-01 15:55:42",
+                        "Update": "2015-07-31 12:00:00",
+                        "Version": "0.97.8.0"
+                      }
+                    ],
+                    "THimphash": {
+                      "Value": "3243b13e562279ab7fbe2f31e45d3a95"
+                    },
+                    "THimports": [
+                      {
+                        "DLL": "kernel32.dll"
+                      }
+                    ],
+                    "THlanguage": {
+                      "Value": "040904B0"
+                    },
+                    "THmagic": {
+                      "Value": "PE32 executable for MS Windows (GUI) Intel 80386 32-bit"
+                    },
+                    "THpacker": {
+                      "Value": "UPX -> www.upx.sourceforge.net"
+                    },
+                    "THpdb": null,
+                    "THpehash": {
+                      "Value": "452dda12aae437d193c043388cfc8e1cf9dd0787"
+                    },
+                    "THsection": [
+                      {
+                        "Md5": "d41d8cd98f00b204e9800998ecf8427e",
+                        "Name": "UPX0",
+                        "Sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "Size": "0"
+                      },
+                      {
+                        "Md5": "be7cee8566021aa22591d9bf68634a88",
+                        "Name": "UPX1",
+                        "Sha1": "f9665ffa7f1b1f10e6265d7e1bf651a3c09793d2",
+                        "Size": "47616"
+                      },
+                      {
+                        "Md5": "6e964a0172c2edaff9838cbf467ab13e",
+                        "Name": ".rsrc",
+                        "Sha1": "e793ae7e3e91e59b1195cb8e283194d811013f88",
+                        "Size": "130560"
+                      },
+                      {
+                        "Md5": "bf619eac0cdf3f68d496ea9344137e8b",
+                        "Name": ".Kerbero",
+                        "Sha1": "5c3eb80066420002bc3dcc7ca4ab6efad7ed4ae5",
+                        "Size": "512"
+                      },
+                      {
+                        "Md5": "bf619eac0cdf3f68d496ea9344137e8b",
+                        "Name": ".Kerbero",
+                        "Sha1": "5c3eb80066420002bc3dcc7ca4ab6efad7ed4ae5",
+                        "Size": "512"
+                      },
+                      {
+                        "Md5": "86759dc484cc49f4800f7f13a4df40d1",
+                        "Name": ".Kerbero",
+                        "Sha1": "27d7d38a1cff80b297b1e4829cf6139af83a038e",
+                        "Size": "66048"
+                      }
+                    ],
+                    "THtimestamp": {
+                      "Value": "2009-09-12 18:01:17"
+                    },
+                    "THversion": {
+                      "Value": "LegalCopyright:  \nInternalName: rootwarez.org\nFileVersion:  \nCompanyName:  \nLegalTrademarks:  \nComments:  \nProductName:  \nProductVersion: 2.01\nFileDescription:  \nOriginalFilename:   .exe\n"
+                    }
+                  },
+                  "Time": "2015-08-02 00:49:35",
+                  "Version": "0.3"
+                },
+                "markdown": "#### #totalhash\n\n| Found              | URL           |\n|:-------------------|:--------------|\n| :white_check_mark: | [link](https://totalhash.cymru.com/analysis/?4af607a4ecf7885018ab5a788e8f0607b4fcb08b) |\n\n"
+              }
+            }
+          },
+          "scan_date": "2017-07-08T21:49:33.096664874Z"
+        }
+      },
+      {
+        "_index": "malice",
+        "_type": "samples",
+        "_id": "AV0kLe9CTLCXwQnk9qH7",
+        "_score": 1,
+        "_source": {
+          "plugins": {
+            "intel": {
+              "totalhash": {
+                "Results": {
+                  "Md5": "",
+                  "Sha1": "",
+                  "THcalltree": null,
+                  "THnetwork_pcap": null,
+                  "THprocesses": null,
+                  "THrunning_processes": null,
+                  "THstatic": null,
+                  "Time": "",
+                  "Version": ""
+                },
+                "markdown": "#### #totalhash\n\n - Not found\n"
+              }
+            }
+          },
+          "scan_date": "2017-07-08T21:49:36.446766631Z"
+        }
+      }
+    ]
+  }
+}
