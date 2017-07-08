@@ -59,8 +59,7 @@ jobs:
           name: Run malware test
           command: |
             set -x
-            docker run app -V 4af607a4ecf7885018ab5a788e8f0607b4fcb08b | jq .
-            docker run app -t 4af607a4ecf7885018ab5a788e8f0607b4fcb08b
+            docker run app
       # - deploy:
       #     name: Push application Docker image
       #     command: |
