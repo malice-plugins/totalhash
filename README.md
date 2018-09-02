@@ -180,11 +180,16 @@ This will output to stdout and POST to malice results API webhook endpoint.
 - [To write results to ElasticSearch](https://github.com/malice-plugins/totalhash/blob/master/docs/elasticsearch.md)
 - [To create a totalhash lookup micro-service](https://github.com/malice-plugins/totalhash/blob/master/docs/web.md)
 - [To post results to a webhook](https://github.com/malice-plugins/totalhash/blob/master/docs/callback.md)
-- [To query totalhash for a filename](https://github.com/malice-plugins/totalhash/blob/master/docs/query_filename.md)
 
 ## Issues
 
-Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/malice-plugins/totalhash/issues/new) and I'll get right on it.
+Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/malice-plugins/totalhash/issues/new)
+
+## Contributing
+
+[See all contributors on GitHub](https://github.com/malice-plugins/totalhash/graphs/contributors).
+
+Please update the [CHANGELOG.md](https://github.com/malice-plugins/totalhash/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
 
 ## License
 
