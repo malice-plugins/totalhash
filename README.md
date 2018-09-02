@@ -1,7 +1,6 @@
-malice-totalhash
-================
+# malice-totalhash
 
-[![Circle CI](https://circleci.com/gh/malice-plugins/totalhash.png?style=shield)](https://circleci.com/gh/malice-plugins/totalhash) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Image](https://img.shields.io/badge/docker%20image-21.8MB-blue.svg)](https://hub.docker.com/r/malice/totalhash/)
+[![Circle CI](https://circleci.com/gh/malice-plugins/totalhash.png?style=shield)](https://circleci.com/gh/malice-plugins/totalhash) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/totalhash.svg)](https://hub.docker.com/r/malice/totalhash/) [![Docker Image](https://img.shields.io/badge/docker%20image-52.7MB-blue.svg)](https://hub.docker.com/r/malice/totalhash/)
 
 Malice [#totalhash](https://totalhash.cymru.com) Plugin
 
@@ -9,14 +8,14 @@ This repository contains a **Dockerfile** of **malice/totalhash** for [Docker](h
 
 ### Dependencies
 
--	[malice/alpine](https://hub.docker.com/r/malice/alpine/)
+- [malice/alpine](https://hub.docker.com/r/malice/alpine/)
 
-### Installation
+## Installation
 
-1.	Install [Docker](https://www.docker.io/).
-2.	Download [trusted build](https://hub.docker.com/r/malice/totalhash/) from public [DockerHub](https://hub.docker.com): `docker pull malice/totalhash`
+1. Install [Docker](https://www.docker.io/).
+2. Download [trusted build](https://hub.docker.com/r/malice/totalhash/) from public [DockerHub](https://hub.docker.com): `docker pull malice/totalhash`
 
-### Usage
+## Usage
 
 ```
 docker run --rm malice/totalhash SHA1
@@ -34,7 +33,7 @@ Author:
 
 Options:
   --verbose, -V		verbose output
-  --elasitcsearch value	elasitcsearch address for Malice to store results [$MALICE_ELASTICSEARCH]
+  --elasticsearch value	elasticsearch address for Malice to store results [$MALICE_ELASTICSEARCH]
   --post, -p		POST results to Malice webhook [$MALICE_ENDPOINT]
   --proxy, -x		proxy settings for Malice webhook endpoint [$MALICE_PROXY]
   --table, -t		output as Markdown table
@@ -51,10 +50,9 @@ Run 'totalhash COMMAND --help' for more information on a command.
 
 This will output to stdout and POST to malice results API webhook endpoint.
 
-Sample Output
--------------
+## Sample Output
 
-### JSON:
+### [JSON](https://github.com/malice-plugins/totalhash/blob/master/docs/results.json)
 
 ```json
 {
@@ -163,44 +161,31 @@ Sample Output
     }
   }
 }
-
 ```
 
-### Markdown Table:
+### [Markdown](https://github.com/malice-plugins/totalhash/blob/master/docs/SAMPLE.md)
 
 ---
 
 #### #totalhash
+
 | Found              | URL                                                                                    |
 | ------------------ | -------------------------------------------------------------------------------------- |
 | :white_check_mark: | [link](https://totalhash.cymru.com/analysis/?4af607a4ecf7885018ab5a788e8f0607b4fcb08b) |
 
 ---
 
-Documentation
--------------
+## Documentation
 
-### To write results to [ElasticSearch](https://www.elastic.co/products/elasticsearch)
+- [To write results to ElasticSearch](https://github.com/malice-plugins/totalhash/blob/master/docs/elasticsearch.md)
+- [To create a totalhash lookup micro-service](https://github.com/malice-plugins/totalhash/blob/master/docs/web.md)
+- [To post results to a webhook](https://github.com/malice-plugins/totalhash/blob/master/docs/callback.md)
+- [To query totalhash for a filename](https://github.com/malice-plugins/totalhash/blob/master/docs/query_filename.md)
 
-```bash
-$ docker volume create --name malice
-$ docker run -d --name elastic \
-                -p 9200:9200 \
-                -v malice:/usr/share/elasticsearch/data \
-                 blacktop/elasticsearch
-$ docker run --rm --link elastic malice/totalhash -t SHA1
-```
-
-### POST results to a webhook
-
-```bash
-$ docker run -e MALICE_ENDPOINT="https://malice.io:31337/lookup/hash" malice/totalhash --post SHA1
-```
-
-### Issues
+## Issues
 
 Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/malice-plugins/totalhash/issues/new) and I'll get right on it.
 
-### License
+## License
 
-MIT Copyright (c) 2016-2017 **blacktop**
+MIT Copyright (c) 2016 **blacktop**

@@ -1,0 +1,15 @@
+# malice/totalhash plugin configuration.
+
+name = 'totalhash'
+description = 'totalhash - Malice #totalhash Plugin'
+category = 'intel'
+version = '0.1.0'
+
+accepts = [ 'hash' ]
+hashtypes = [ 'sha1' ]
+
+[system]
+cpu = 0.5
+ram = 256 # MB
+
+[settings]

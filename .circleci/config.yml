@@ -3,27 +3,15 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: docker:17.06.0-ce-git
+      - image: docker:18.03.1-ce-git
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 18.03.1-ce
       - run:
           name: Install dependencies
           command: |
-            apk add --no-cache \
-              py2-pip=9.0.1-r1 curl=7.54.0-r0 jq
-            pip install \
-              docker-compose==1.14.0 \
-              awscli==1.11.112 \
-              httpie
-      - run:
-          name: Install Docker client
-          command: |
-            set -x
-            VER="17.05.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
+            apk add --no-cache jq
       - restore_cache:
           keys:
             - v1-{{ .Branch }}
@@ -38,7 +26,7 @@ jobs:
           name: Build application Docker image
           command: |
             docker version
-            docker build --build-arg ZONEKEY=${ZONEKEY} --cache-from=app -t app .
+            docker build --cache-from=app -t app .
       - run:
           name: Get Docker image size
           command: |
@@ -56,16 +44,8 @@ jobs:
           paths:
             - /caches/app.tar
       - run:
-          name: Run malware test
+          name: Run tests
           command: |
             set -x
-            docker run app
-      # - deploy:
-      #     name: Push application Docker image
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #         login="$(aws ecr get-login)"
-      #         ${login}
-      #         docker tag app "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-      #         docker push "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-      #       fi
+            docker run --rm app -V 6b82f126555e7644816df5d4e4614677ee0bda5c | jq .
+            docker run --rm app -t 6b82f126555e7644816df5d4e4614677ee0bda5c
