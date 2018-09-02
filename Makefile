@@ -63,9 +63,9 @@ test:
 .PHONY: test_elastic
 test_elastic: start_elasticsearch
 	@echo "===> ${NAME} test_elastic"
-	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=elasticsearch:9200 $(ORG)/$(NAME):$(VERSION) -V --user ${MALICE_TH_USER} --key ${MALICE_TH_KEY} lookup $(FOUND_HASH)
+	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 $(ORG)/$(NAME):$(VERSION) -V --user ${MALICE_TH_USER} --key ${MALICE_TH_KEY} lookup $(FOUND_HASH)
 	@echo "===> ${NAME} test_elastic NOT found"
-	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=elasticsearch:9200 $(ORG)/$(NAME):$(VERSION) -V --user ${MALICE_TH_USER} --key ${MALICE_TH_KEY} lookup $(MISSING_HASH)
+	docker run --rm --link elasticsearch -e MALICE_ELASTICSEARCH_URL=http://elasticsearch:9200 $(ORG)/$(NAME):$(VERSION) -V --user ${MALICE_TH_USER} --key ${MALICE_TH_KEY} lookup $(MISSING_HASH)
 	http localhost:9200/malice/_search | jq . > docs/elastic.json
 
 # .PHONY: test_elastic_remote
@@ -112,6 +112,7 @@ clean:
 	docker-clean stop
 	docker rmi $(ORG)/$(NAME):$(VERSION)
 	docker rmi $(ORG)/$(NAME):latest
+
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:

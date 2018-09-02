@@ -1,9 +1,10 @@
 {
-  "took": 87,
+  "took": 4,
   "timed_out": false,
   "_shards": {
     "total": 1,
     "successful": 1,
+    "skipped": 0,
     "failed": 0
   },
   "hits": {
@@ -13,13 +14,14 @@
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "AV0kLeI7TLCXwQnk9qH6",
+        "_id": "ksoWnGUBJQ6aHehzxdZE",
         "_score": 1,
         "_source": {
           "plugins": {
             "intel": {
               "totalhash": {
-                "Results": {
+                "markdown": "#### #totalhash\n\n| Found              | URL           |\n|:-------------------|:--------------|\n| :white_check_mark: | [link](https://totalhash.cymru.com/analysis/?4af607a4ecf7885018ab5a788e8f0607b4fcb08b) |\n\n",
+                "results": {
                   "Md5": "9483ba381cdb7c983e630839a0d2a1c3",
                   "Sha1": "4af607a4ecf7885018ab5a788e8f0607b4fcb08b",
                   "THcalltree": {
@@ -1910,15 +1912,6 @@
                         "Version": "1.9.161.2"
                       },
                       {
-                        "Av_product": "soph",
-                        "Info": "",
-                        "Scanner": "Sophos",
-                        "Signature": "Mal/EncPk-AAK",
-                        "Timestamp": "2015-08-01 15:55:42",
-                        "Update": "2015-07-31 10:12:26",
-                        "Version": "2.98.000"
-                      },
-                      {
                         "Av_product": "ms32",
                         "Info": "Password",
                         "Scanner": "Microsoft Security Essentials",
@@ -2176,39 +2169,27 @@
                   },
                   "Time": "2015-08-02 00:49:35",
                   "Version": "0.3"
-                },
-                "markdown": "#### #totalhash\n\n| Found              | URL           |\n|:-------------------|:--------------|\n| :white_check_mark: | [link](https://totalhash.cymru.com/analysis/?4af607a4ecf7885018ab5a788e8f0607b4fcb08b) |\n\n"
+                }
               }
             }
           },
-          "scan_date": "2017-07-08T21:49:33.096664874Z"
+          "scan_date": "2018-09-02T21:01:02.649018582Z"
         }
       },
       {
         "_index": "malice",
         "_type": "samples",
-        "_id": "AV0kLe9CTLCXwQnk9qH7",
+        "_id": "k8oWnGUBJQ6aHehzzdac",
         "_score": 1,
         "_source": {
           "plugins": {
             "intel": {
               "totalhash": {
-                "Results": {
-                  "Md5": "",
-                  "Sha1": "",
-                  "THcalltree": null,
-                  "THnetwork_pcap": null,
-                  "THprocesses": null,
-                  "THrunning_processes": null,
-                  "THstatic": null,
-                  "Time": "",
-                  "Version": ""
-                },
                 "markdown": "#### #totalhash\n\n - Not found\n"
               }
             }
           },
-          "scan_date": "2017-07-08T21:49:36.446766631Z"
+          "scan_date": "2018-09-02T21:01:04.794884891Z"
         }
       }
     ]
