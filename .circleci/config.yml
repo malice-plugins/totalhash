@@ -47,5 +47,6 @@ jobs:
           name: Run tests
           command: |
             set -x
-            docker run --rm app -V 6b82f126555e7644816df5d4e4614677ee0bda5c | jq .
-            docker run --rm app -t 6b82f126555e7644816df5d4e4614677ee0bda5c
+            docker run --rm app
+            # docker run --rm app -V lookup 6b82f126555e7644816df5d4e4614677ee0bda5c | jq .
+            # docker run --rm app -V lookup -t 6b82f126555e7644816df5d4e4614677ee0bda5c

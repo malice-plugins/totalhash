@@ -47,7 +47,7 @@ endif
 	@docker run --init -d --name elasticsearch -p 9200:9200 malice/elasticsearch:6; sleep 15
 
 .PHONY: test_all
-test_all: test test_elastic test_markdown test_web
+test_all: test test_web test_elastic test_markdown
 
 .PHONY: test
 test:

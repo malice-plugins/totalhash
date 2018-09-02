@@ -195,12 +195,19 @@ func webLookUp(w http.ResponseWriter, r *http.Request) {
 	th := TotalHash{Results: analysis}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	// if nsrl.Results.Found {
-	// 	w.WriteHeader(http.StatusOK)
-	// } else {
-	// 	w.WriteHeader(http.StatusNotFound)
-	// }
 
+	if th.Results.IsEmpty() {
+		w.WriteHeader(http.StatusNotFound)
+		if err := json.NewEncoder(w).Encode(map[string]string{
+			"found": "false",
+			"sha1":  hash,
+		}); err != nil {
+			panic(err)
+		}
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
 	if err := json.NewEncoder(w).Encode(th); err != nil {
 		panic(err)
 	}
