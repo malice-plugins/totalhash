@@ -38,6 +38,7 @@ var (
 	Version string
 	// BuildTime stores the plugin's build time
 	BuildTime string
+	hash      string
 	// es is the elasticsearch database object
 	es elasticsearch.Database
 	// #totalhash creds
@@ -56,7 +57,7 @@ func assert(err error) {
 		log.WithFields(log.Fields{
 			"plugin":   name,
 			"category": category,
-			"path":     path,
+			"hash":     hash,
 		}).Fatal(err)
 	}
 }
@@ -314,7 +315,7 @@ func main() {
 						log.SetLevel(log.DebugLevel)
 					}
 
-					hash := c.Args().First()
+					hash = c.Args().First()
 
 					hashTyp, err := utils.GetHashType(hash)
 					assert(err)
