@@ -51,6 +51,16 @@ type TotalHash struct {
 	MarkDown string     `json:"markdown,omitempty" structs:"markdown,omitempty"`
 }
 
+func assert(err error) {
+	if err != nil {
+		log.WithFields(log.Fields{
+			"plugin":   name,
+			"category": category,
+			"path":     path,
+		}).Fatal(err)
+	}
+}
+
 // IsEmpty checks if THanalysis is empty
 func (r THanalysis) IsEmpty() bool {
 	return reflect.DeepEqual(r, THanalysis{})
@@ -101,10 +111,10 @@ func getAnalysis(sha1 string, userid string, sign string) THanalysis {
 	}
 
 	// fmt.Println(resp.String())
-	// utils.Assert(ioutil.WriteFile(sha1+".xml", resp.Bytes(), 0644))
+	// assert(ioutil.WriteFile(sha1+".xml", resp.Bytes(), 0644))
 
 	err = xml.Unmarshal(resp.Bytes(), &tha)
-	utils.Assert(err)
+	assert(err)
 
 	return tha
 }
@@ -307,7 +317,7 @@ func main() {
 					hash := c.Args().First()
 
 					hashTyp, err := utils.GetHashType(hash)
-					utils.Assert(err)
+					assert(err)
 
 					if !strings.EqualFold(hashTyp, "sha1") {
 						log.Fatal(fmt.Errorf("please supply a valid 'sha1' hash"))
@@ -341,12 +351,12 @@ func main() {
 								"found": "false",
 								"sha1":  hash,
 							})
-							utils.Assert(err)
+							assert(err)
 							fmt.Println(string(notfoundJSON))
 						} else {
 							th.MarkDown = ""
 							thashJSON, err := json.Marshal(th)
-							utils.Assert(err)
+							assert(err)
 
 							if c.GlobalBool("post") {
 								request := gorequest.New()
@@ -372,5 +382,5 @@ func main() {
 	}
 
 	err := app.Run(os.Args)
-	utils.Assert(err)
+	assert(err)
 }
